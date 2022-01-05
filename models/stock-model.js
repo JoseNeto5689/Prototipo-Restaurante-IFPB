@@ -12,7 +12,7 @@ class Stock{
     }
 
     alter(res, values, id){
-        const sql = "update stock set ? where id = ?"
+        const sql = "update product set ? where id = ?"
         connection.query(sql, [values, id],(erro ,result) => {
             if(erro){
                 res.status(400).json(erro)
@@ -23,12 +23,12 @@ class Stock{
     }
 
     delete(res, id){
-        const sql = "delete from product where id = ?"
+        const sql = `delete from product where id IN ${id}`
         connection.query(sql, id, (erro, result) => {
             if(erro){
                 res.status(400).json(erro)
             }else{
-                res.status(200).json({id})
+                res.status(200).json({result})
             }
         })
     }

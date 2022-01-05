@@ -4,7 +4,6 @@ connection.connect(erro => {
     if(erro){
         console.log("Erro")
     }else{
-        console.log("BD conectado com sucesso")
         const app = customExpress()
         app.listen("3000", () => {
         console.log("Server status: OK\nWorking Port: 3000\n")

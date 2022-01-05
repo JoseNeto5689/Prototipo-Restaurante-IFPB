@@ -13,4 +13,15 @@ module.exports = app => {
         const values = req.body
         Stock.add(res, values)
     })
+    app.patch("/stock/alter/:id",(req, res) => {
+        const values = req.body
+        const id = parseInt(req.params.id)
+        Stock.alter(res, values, id)
+    })
+
+    app.delete("/stock/delete", (req, res) => {
+        let ids = req.body.id
+        ids = "(" + ids.join(",") + ")"
+        Stock.delete(res,ids)
+    })
 }
