@@ -45,7 +45,7 @@ class Stock{
     }
 
     search(res, value){
-        const sql = `SELECT * FROM product WHERE product_name like "%${value}%"`
+        const sql = `SELECT * FROM product WHERE product_name like "%${value}%" OR product_description like "%${value}%"`
         connection.query(sql, value, (erro, result) => {
             if(erro){
                 res.status(400).json(erro)

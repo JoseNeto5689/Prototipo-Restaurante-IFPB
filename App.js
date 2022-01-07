@@ -1,10 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useEffect, useState} from 'react'; 
+import { StyleSheet, Text, View, StatusBar, ActivityIndicator } from 'react-native';
+const Requests = require("./controllers/request-control")
 
 export default function App() {
   return (
-    <View style={styles.container} >
-      <Text>Hello World</Text>
+    <View style={styles.container}>
+      <StatusBar/>
     </View>
   );
 }
