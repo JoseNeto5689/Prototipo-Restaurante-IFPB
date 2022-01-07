@@ -32,8 +32,8 @@ class Requests{
     }
     list(setDados, setLoading){ //Precisa da estrutura do ActivityIndicator e do useEffect
         fetch(this.ip + "/stock")
-        .then((resp) => resp.text())
-        .then((text) => { setDados(text) })
+        .then((resp) => resp.json())
+        .then((json) => { setDados(json) })
         .catch(() => { alert("Erro!") })
         .finally(() => { setLoading(false)})
     }
