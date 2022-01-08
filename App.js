@@ -1,14 +1,12 @@
-import React from 'react'; 
+import React, {useState} from 'react'; 
 import { View, StyleSheet } from 'react-native';
-import Stock from "./screens/Stock"
-import DeleteButton from './components/delete_button';
-
+import DataInput from './components/date_input';
 //Aplicar o moment no Product
 
 export default function App() {  
   return (
     <View style = { styles.container } >
-      <Stock/>
+        <DataInput/>
     </View>
   );
 }
