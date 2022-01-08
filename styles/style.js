@@ -23,6 +23,38 @@ const mocks = StyleSheet.create({
         borderTopWidth: 3,
         paddingHorizontal: "5%",
         bottom: 0
+    },
+    action_button: {
+        width: 45,
+        height: 45,
+        backgroundColor: "white",
+        borderWidth: 1,
+        borderColor: "#707070",
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        marginHorizontal: 4
+    },
+    search: {
+        width: 180,
+        height: 45,
+        backgroundColor: "white",
+        borderWidth: 1,
+        borderColor: "#707070",
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row",
+        marginHorizontal: 4
+    },
+    searchIcon: {
+        position: "relative",
+        left: 10,
+    },
+    action_bar: {
+        width: 400,
+        flexDirection: "row",
+        marginVertical: 10
     }
 })
 
