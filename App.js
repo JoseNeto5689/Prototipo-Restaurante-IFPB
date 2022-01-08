@@ -1,21 +1,21 @@
-import React, {useState} from 'react'; 
+import React from 'react'; 
 import { View, StyleSheet } from 'react-native';
-import DataInput from './components/date_input';
-//Aplicar o moment no Product
+import FoodKinds from './components/food_kinds';
+
 
 export default function App() {  
   return (
     <View style = { styles.container } >
-        <DataInput/>
+        <FoodKinds/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+   flex: 1,
+   alignItems: "center",
+   justifyContent: "center"
   }
 })
 
