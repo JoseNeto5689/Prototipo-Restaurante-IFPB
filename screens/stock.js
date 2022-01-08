@@ -21,7 +21,7 @@ export default function Stock() {
         loading ? <ActivityIndicator/> : <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
             <Header/>
             <ActionBar/>
-            <ProductList values = { dados } />
+            <ProductList values = { dados } editionMode={true}/>
             <Footer/>
         </View>
       }

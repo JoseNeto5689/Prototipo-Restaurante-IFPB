@@ -2,10 +2,13 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import AppLoading from 'expo-app-loading';
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold } from '@expo-google-fonts/nunito-sans';
+import CheckBox from "./check_box";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons"
 
 const moment = require("moment")
 
-export default function Product({values}){
+export default function Product({values, id, editionMode = false}){
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
       });
@@ -15,7 +18,9 @@ export default function Product({values}){
     } else {
         return <View style = {{ width: 380, height: 155}}>
         <View style = { styles.tag_name_container } >
+            {editionMode ? <CheckBox id={values.id}/> : null}
             <Text style = { styles.tag_name } >Nome do Produto</Text>
+            {editionMode ? <FontAwesomeIcon icon={faPen} size={25} color="white" /> : null}
         </View>
         <View style = { styles.product_name_container } >
                 <Text style={styles.product_name} >{values.product_name}</Text>
@@ -61,7 +66,10 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 5,
         borderWidth: 2,
         borderBottomWidth: 1,
-        borderColor: "#093902"
+        borderColor: "#093902",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingHorizontal: 15
     },
     tag_name:{
         color: "white",

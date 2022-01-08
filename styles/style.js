@@ -55,7 +55,17 @@ const mocks = StyleSheet.create({
         width: 400,
         flexDirection: "row",
         marginVertical: 10
+    },
+    check_box: {
+        width: 25,
+        height: 25,
+        backgroundColor: "white",
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: "#707070",
+        borderRadius: 5,
     }
-})
+}) 
 
 export default mocks;

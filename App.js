@@ -1,13 +1,14 @@
-import React,{useEffect, useState} from 'react'; 
-import Stock from './screens/stock';
-import ActionBar from './components/action_bar';
+import React from 'react'; 
 import { View, StyleSheet } from 'react-native';
+import Stock from "./screens/Stock"
 
 //Aplicar o moment no Product
 
 export default function App() {  
   return (
-    <View style = { styles.container } ><Stock/></View>
+    <View style = { styles.container } >
+      <Stock  />
+    </View>
   );
 }
 
