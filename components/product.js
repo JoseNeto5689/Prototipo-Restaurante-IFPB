@@ -5,7 +5,7 @@ import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600Semi
 
 const moment = require("moment")
 
-export default function Product({obj}){
+export default function Product({values}){
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
       });
@@ -18,7 +18,7 @@ export default function Product({obj}){
             <Text style = { styles.tag_name } >Nome do Produto</Text>
         </View>
         <View style = { styles.product_name_container } >
-            <Text style = { styles.product_name } >{obj.product_name}</Text>
+                <Text style={styles.product_name} >{values.product_name}</Text>
         </View>
         <View style = {{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} >
             <View style = {{ width: "30%", borderBottomRightRadius: 5 }} >
@@ -26,7 +26,7 @@ export default function Product({obj}){
                     <Text style = { styles.top_text } >Quantidade</Text>
                 </View>
                 <View style = { [styles.sides, { borderBottomLeftRadius: 5  }] } >
-                    <Text style = { styles.down_text } >{obj.amount}</Text>
+                    <Text style = { styles.down_text } >{values.amount}</Text>
                 </View>
             </View>
             <View  style = {{ width: "40%" }} >
@@ -34,7 +34,7 @@ export default function Product({obj}){
                     <Text style = { styles.top_text } >Gênero Alimenticio</Text>
                 </View>
                 <View style = { styles.center } >
-                    <Text style = { styles.down_text } >{obj.food_kinds}</Text>
+                    <Text style = { styles.down_text } >{values.food_kinds}</Text>
                 </View>
             </View>
             <View style = {{ width: "30%"}} >
@@ -42,7 +42,7 @@ export default function Product({obj}){
                     <Text style = { styles.top_text } >Validade</Text>
                 </View>
                 <View style = { [styles.sides, { borderBottomRightRadius: 5  }] } >
-                    <Text style = { styles.down_text } >{moment(obj.expiration_date).format("DD/MM/YYYY")}</Text>
+                    <Text style = { styles.down_text } >{moment(values.expiration_date).format("DD/MM/YYYY")}</Text>
                 </View>
             </View>
         </View>

@@ -2,9 +2,8 @@ import { StyleSheet } from "react-native";
 
 const mocks = StyleSheet.create({
     header: {
-        width: "100%",
+        width: 410,
         height: "10%",
-        position: "absolute",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
@@ -14,9 +13,8 @@ const mocks = StyleSheet.create({
         paddingHorizontal: "4%"
     },
     footer: {
-        width: "100%",
+        width: 410,
         height: "12%",
-        position: "absolute",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
