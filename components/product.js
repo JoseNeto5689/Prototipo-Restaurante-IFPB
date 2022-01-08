@@ -8,7 +8,7 @@ import { faPen } from "@fortawesome/free-solid-svg-icons"
 
 const moment = require("moment")
 
-export default function Product({values, id, editionMode = false}){
+export default function Product({values, id, editionMode}){
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
       });
@@ -17,9 +17,9 @@ export default function Product({values, id, editionMode = false}){
     return <AppLoading />;
     } else {
         return <View style = {{ width: 380, height: 155}}>
-        <View style = { styles.tag_name_container } >
+        <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] } >
             {editionMode ? <CheckBox id={values.id}/> : null}
-            <Text style = { styles.tag_name } >Nome do Produto</Text>
+            <Text style = { [styles.tag_name ] } >Nome do Produto</Text>
             {editionMode ? <FontAwesomeIcon icon={faPen} size={25} color="white" /> : null}
         </View>
         <View style = { styles.product_name_container } >
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 27,
         fontFamily: "NunitoSans_700Bold",
+        textAlign: "center"
     },
     product_name_container: {
         width: "100%",

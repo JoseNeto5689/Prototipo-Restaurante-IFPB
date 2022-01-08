@@ -65,6 +65,23 @@ const mocks = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#707070",
         borderRadius: 5,
+    },
+    delete_button: {
+        width: 250,
+        height: 40,
+        backgroundColor: "#00CC00",
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: "#0D4E03",
+        justifyContent: "center",
+        alignContent: "center",
+        marginBottom: 10,
+
+    }, 
+    delete_text: {
+        textAlign: "center",
+        color: "white",
+        fontSize: 20,
     }
 }) 
 

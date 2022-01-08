@@ -4,14 +4,16 @@ import ProductList from '../components/product_list';
 import Header from '../components/hearder';
 import Footer from '../components/footer';
 import ActionBar from '../components/action_bar';
+import DeleteButton from '../components/delete_button';
 const Requests = require("../controllers/request-control")
 
 //Aplicar o moment no Product
 
 export default function Stock() {
-    const [dados, setDados] = useState()
-    const [loading, setLoading] = useState(true)
-    useEffect( () => {Requests.list(setDados, setLoading)} , [])
+  let editionMode = true;
+  const [dados, setDados] = useState()
+  const [loading, setLoading] = useState(true)
+  useEffect( () => {Requests.list(setDados, setLoading)} , [])
 
     
   return (
@@ -21,11 +23,12 @@ export default function Stock() {
         loading ? <ActivityIndicator/> : <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
             <Header/>
             <ActionBar/>
-            <ProductList values = { dados } editionMode={true}/>
+            { editionMode ? <DeleteButton action={() => {}}/> : null}
+            <ProductList values = { dados } editionMode={editionMode}/>
             <Footer/>
         </View>
       }
-    </View>
+    </View> 
   );
 }
 
