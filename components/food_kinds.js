@@ -17,7 +17,7 @@ export default function FoodKinds(){
           <Pick.Item style = { styles.item } label='Carnes e ovos' value = "Carnes e ovos"/>
           <Pick.Item style = { styles.item } label='Leite e derivados' value = "Leite e derivados"/>
           <Pick.Item style = { styles.item } label='Óleos e gorduras' value = "Óleos e gorduras"/>
-          <Pick.Item style = { styles.item }label='Açúcares ' value = "Açúcares "/>
+          <Pick.Item style = { styles.item } label='Açúcares' value = "Açúcares "/>
         </Pick>
     </View>
   );
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     container: {
       borderColor: "#707070",
       borderWidth: 2,
-      height: 40,
+      height: 32,
       alignItems: "center",
       justifyContent: "center",
       borderRadius: 15

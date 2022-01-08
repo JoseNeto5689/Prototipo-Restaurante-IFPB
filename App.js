@@ -1,12 +1,11 @@
 import React from 'react'; 
 import { View, StyleSheet } from 'react-native';
-import FoodKinds from './components/food_kinds';
-
+import NumberInput from './components/number_input';
 
 export default function App() {  
   return (
     <View style = { styles.container } >
-        <FoodKinds/>
+        <NumberInput/>
     </View>
   );
 }
