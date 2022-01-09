@@ -8,7 +8,7 @@ export default function NumberInput(){
         rounded minValue={0}
         type="plus-minus"
         iconStyle={{ fontSize: 14, color: 'black' }}
-        inputStyle={{ fontSize: 16, color: 'black' }}
+        inputStyle={{ fontSize: 16, color: 'black'}}
         totalHeight={32}
         totalWidth={160}
         />

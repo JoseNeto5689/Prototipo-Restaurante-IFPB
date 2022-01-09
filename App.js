@@ -1,11 +1,13 @@
 import React from 'react'; 
 import { View, StyleSheet } from 'react-native';
-import NumberInput from './components/number_input';
+import AddProduct from './screens/AddProduct';
+import Stock from "./screens/Stock"
 
 export default function App() {  
   return (
     <View style = { styles.container } >
-        <NumberInput/>
+      <Stock/>
+      <AddProduct/>
     </View>
   );
 }

@@ -76,13 +76,60 @@ const mocks = StyleSheet.create({
         justifyContent: "center",
         alignContent: "center",
         marginBottom: 10,
-
     }, 
     delete_text: {
         textAlign: "center",
         color: "white",
         fontSize: 20,
+    },
+    modalView: {
+        flex: 1,
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    formContainer: {
+        borderWidth: 3,
+        borderColor: "#676767",
+        borderRadius: 10,
+        backgroundColor: "white",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 20
+    },
+    formTitle: {
+        color: "#707070",
+        fontSize: 30,
+        marginTop: 20
+    },
+    formSubTitle: {
+        color: "#707070",
+        fontSize: 15,
+        textAlign: "center",
+        width: 250,
+        marginHorizontal: 50
+    },
+    row: {
+        flexDirection: "row",
+        paddingHorizontal: 15,
+        marginBottom: 15
+    },
+    submit_container:{
+        backgroundColor: "#00CC00",
+        borderColor: "#0D4E03",
+        borderWidth: 2,
+        borderRadius: 5
+    },
+    submit: {
+        color: "white",
+        paddingVertical: 5,
+        paddingHorizontal: 25
+    },
+    exit: {
+        position: "absolute",
+        top: 10,
+        right: 15
     }
-}) 
+})
 
 export default mocks;

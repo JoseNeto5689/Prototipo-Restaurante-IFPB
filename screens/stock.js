@@ -10,7 +10,7 @@ const Requests = require("../controllers/request-control")
 //Aplicar o moment no Product
 
 export default function Stock() {
-  let editionMode = true;
+  let editionMode = false;
   const [dados, setDados] = useState()
   const [loading, setLoading] = useState(true)
   useEffect( () => {Requests.list(setDados, setLoading)} , [])
