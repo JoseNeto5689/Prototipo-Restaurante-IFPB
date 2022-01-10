@@ -16,7 +16,7 @@ export default function InputText({ width, placeholder }){
         },
         text: {
             paddingHorizontal: 10,
-            fontFamily: "NunitoSans_400Regular",
+            fontFamily: "NunitoSans_600SemiBold",
             color: "#707070"
         }
     })

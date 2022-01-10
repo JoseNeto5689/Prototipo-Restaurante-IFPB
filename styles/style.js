@@ -107,7 +107,7 @@ const mocks = StyleSheet.create({
         fontSize: 15,
         textAlign: "center",
         width: 250,
-        marginHorizontal: 50
+        marginHorizontal: 40
     },
     row: {
         flexDirection: "row",
@@ -129,6 +129,33 @@ const mocks = StyleSheet.create({
         position: "absolute",
         top: 10,
         right: 15
+    },
+    add: {
+        marginRight: 30
+    },
+    remove: {
+        paddingHorizontal: 12,
+        backgroundColor: "red"
+    },
+    actual_quantity: {
+        fontSize: 20,
+        color: "#707070",
+        marginTop: 10,
+    },
+    quantity: {
+        color: "white",
+        fontWeight: "bold",
+        fontSize: 25
+    },
+    quantity_container: {
+        borderRadius: 20,
+        borderColor: "#676767",
+        borderWidth: 2,
+        backgroundColor: "#B5B5B5",
+        paddingHorizontal: 15,
+        marginBottom: 9,
+        marginTop: 5
+
     }
 })
 

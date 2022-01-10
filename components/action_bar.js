@@ -15,9 +15,9 @@ export default function ActionBar({ editionMode = false }){
     } else {
     return <View style = {styles.action_bar} >
         <View style = { styles.search }>
-            <FontAwesomeIcon icon={faSearch} size={30} color="#707070" style={{ paddingLeft: 10 }}/>
+            <FontAwesomeIcon icon={faSearch} size={30} color="#707070" style={{ paddingLeft: 20 }}/>
             <View style = {{ paddingLeft: 5, width: 135 }} >
-                <TextInput style = {{ fontFamily :"NunitoSans_600SemiBold", fontSize: 26, color: "#707070" }} placeholder="Pesquisar"></TextInput>
+                <TextInput style = {{ fontFamily :"NunitoSans_400Regular", fontSize: 20, color: "#707070" }} placeholder="Pesquisar"></TextInput>
             </View>
         </View>
         <View style = {styles.action_button} >
