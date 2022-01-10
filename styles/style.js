@@ -156,7 +156,25 @@ const mocks = StyleSheet.create({
         marginBottom: 9,
         marginTop: 5
 
+    },
+    exclude: {
+        backgroundColor: "red",
+        paddingHorizontal: 10,
+        marginRight: 35
+    }, 
+    cancel1: {
+
+    },
+    save: {
+        paddingHorizontal: 15,
+        marginRight: 35
+    },
+    cancel2: {
+        backgroundColor: "red",
+        paddingHorizontal: 10
     }
+
+
 })
 
 export default mocks;
