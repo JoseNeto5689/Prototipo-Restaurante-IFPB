@@ -7,7 +7,7 @@ import Confirmation from './screens/Confirmation';
 export default function App() {  
   return (
     <View style = { styles.container } >
-      <Confirmation content={"Tem certeza que deseja salvar as alterações feitas? "} option={1}/>
+      <Stock/>
     </View>
   );
 }

@@ -39,7 +39,7 @@ export default function Product({values, id, editionMode}){
                     <Text style = { styles.top_text } >Gênero Alimenticio</Text>
                 </View>
                 <View style = { styles.center } >
-                    <Text style = { styles.down_text } >{values.food_kinds}</Text>
+                    <Text style = { styles.down_text } >{values.food_kind}</Text>
                 </View>
             </View>
             <View style = {{ width: "30%"}} >

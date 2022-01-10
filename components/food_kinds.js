@@ -10,14 +10,14 @@ export default function FoodKinds(){
         style = {{ width: 200 }}
         selectedValue={foodKind}
         onValueChange={(itemValue, itemIndex) => { setFoodKind(itemValue) }}>
-          <Pick.Item style = { styles.item } label='Carboidratos' value = "Carboidratos"/>
-          <Pick.Item style = { styles.item } label='Hortaliças' value = "Hortaliças"/>
-          <Pick.Item style = { styles.item } label='Frutas' value = "Frutas"/>
-          <Pick.Item style = { styles.item } label='Leguminosas' value = "Leguminosas"/>
-          <Pick.Item style = { styles.item } label='Carnes e ovos' value = "Carnes e ovos"/>
-          <Pick.Item style = { styles.item } label='Leite e derivados' value = "Leite e derivados"/>
-          <Pick.Item style = { styles.item } label='Óleos e gorduras' value = "Óleos e gorduras"/>
-          <Pick.Item style = { styles.item } label='Açúcares' value = "Açúcares "/>
+          <Pick.Item style = { styles.item } label='Carboidratos' value = {1}/>
+          <Pick.Item style = { styles.item } label='Hortaliças' value = {2}/>
+          <Pick.Item style = { styles.item } label='Frutas' value = {3}/>
+          <Pick.Item style = { styles.item } label='Leguminosas' value = {4}/>
+          <Pick.Item style = { styles.item } label='Carnes e ovos' value = {5}/>
+          <Pick.Item style = { styles.item } label='Leite e derivados' value = {6}/>
+          <Pick.Item style = { styles.item } label='Óleos e gorduras' value = {7}/>
+          <Pick.Item style = { styles.item } label='Açúcares' value = {8}/>
         </Pick>
     </View>
   );
