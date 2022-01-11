@@ -7,6 +7,7 @@ import ActionBar from '../components/action_bar';
 import DeleteButton from '../components/delete_button';
 import AddProduct from './AddProduct';
 import AlterProduct from './AlterProduct';
+import ExpandedProduct from './ExpandedProduct';
 const Requests = require("../controllers/request-control")
 
 
@@ -16,6 +17,7 @@ export default function Stock() {
   let editionMode = false;
   let addProduct = false
   let alterProduct = false
+  let productExpanded = true
   const [dados, setDados] = useState()
   const [loading, setLoading] = useState(true)
   useEffect( () => {Requests.list(setDados, setLoading)} , [])
@@ -33,6 +35,7 @@ export default function Stock() {
             <Footer/>
             { addProduct && <AddProduct/> }
             { alterProduct && <AlterProduct/> }
+            { productExpanded && <ExpandedProduct values={dados[0]}/> }
         </View>
       }
     </View> 

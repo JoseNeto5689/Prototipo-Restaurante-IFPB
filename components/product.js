@@ -1,14 +1,15 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import AppLoading from 'expo-app-loading';
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold } from '@expo-google-fonts/nunito-sans';
 import CheckBox from "./check_box";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons"
+import styles from "../styles/style"
 
 const moment = require("moment")
 
-export default function Product({values, id, editionMode}){
+export default function Product({values, editionMode}){
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
       });
@@ -23,7 +24,9 @@ export default function Product({values, id, editionMode}){
             {editionMode ? <FontAwesomeIcon icon={faPen} size={25} color="white" /> : null}
         </View>
         <View style = { styles.product_name_container } >
-                <Text style={styles.product_name} >{values.product_name}</Text>
+                <ScrollView horizontal = { true } >
+                    <Text style={styles.product_name} >{ values.product_name }</Text>
+                </ScrollView>
         </View>
         <View style = {{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} >
             <View style = {{ width: "30%", borderBottomRightRadius: 5 }} >
@@ -35,7 +38,7 @@ export default function Product({values, id, editionMode}){
                 </View>
             </View>
             <View  style = {{ width: "40%" }} >
-                <View style = { styles.center_container } >
+                <View style = { styles.center_container }>
                     <Text style = { styles.top_text } >Gênero Alimenticio</Text>
                 </View>
                 <View style = { styles.center } >
@@ -54,86 +57,3 @@ export default function Product({values, id, editionMode}){
         </View>
     }
 }
-
-const styles = StyleSheet.create({
-    tag_name_container: {
-        width: "100%",
-        height: "30%",
-        backgroundColor: "#0D4E03",
-        alignItems: "center",
-        justifyContent: "center",
-        borderTopRightRadius: 5,
-        borderTopLeftRadius: 5,
-        borderWidth: 2,
-        borderBottomWidth: 1,
-        borderColor: "#093902",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingHorizontal: 15
-    },
-    tag_name:{
-        color: "white",
-        fontSize: 27,
-        fontFamily: "NunitoSans_700Bold",
-        textAlign: "center"
-    },
-    product_name_container: {
-        width: "100%",
-        height: "30%",
-        backgroundColor: "white",
-        alignItems: "center",
-        justifyContent: "center",
-        borderWidth: 2,
-        borderColor: "#093902",
-        borderTopWidth: 1
-    },
-    product_name: {
-        fontSize: 27,
-        fontFamily: "NunitoSans_600SemiBold",
-        color: "#707070"
-    },
-    sides_container: {
-        backgroundColor: "#0D4E03",
-        paddingVertical: 8,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRightWidth: 2,
-        borderLeftWidth: 2,
-        borderColor: "#093902"
-    },
-    sides: {
-        backgroundColor: "white",
-        paddingVertical: 8,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRightWidth: 2,
-        borderLeftWidth: 2,
-        borderBottomWidth: 2,
-        borderColor: "#093902",
-        borderTopWidth: 2
-    },
-    center_container:{
-        backgroundColor: "#0D4E03",
-        paddingVertical: 8,
-        alignItems: "center",
-        justifyContent: "center",
-        
-    },
-    center:{
-        backgroundColor: "white",
-        paddingVertical: 8,
-        alignItems: "center",
-        justifyContent: "center",
-        borderBottomWidth: 2,
-        borderTopWidth: 2
-    },
-    top_text: {
-        fontFamily: "NunitoSans_700Bold",
-        color: "white"
-    },
-    down_text: {
-        fontFamily: "NunitoSans_600SemiBold",
-        color: "#707070",
-        fontSize: 15
-    },
-})

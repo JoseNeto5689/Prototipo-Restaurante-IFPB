@@ -1,8 +1,7 @@
 import React from 'react'; 
 import { View, StyleSheet } from 'react-native';
-import AddProduct from './screens/AddProduct';
 import Stock from "./screens/Stock"
-import Confirmation from './screens/Confirmation';
+import ExpandedProduct from './screens/ExpandedProduct';
 
 export default function App() {  
   return (
