@@ -6,7 +6,7 @@ import Exit from "../components/exit";
 import Submit from "../components/submit";
 const moment = require("moment")
 
-export default function ExpandedProduct({values}){
+export default function ExpandedProduct({values, expandedState}){
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
       });
@@ -59,7 +59,7 @@ export default function ExpandedProduct({values}){
                             </View>
                         </View>
                     </View>
-                    <View style = {{ marginTop: 30 }} ><Submit content="Voltar" styleContainer={styles.come_back} styleText={ styles.come_back_text } action={ () => {} }/></View>
+                    <View style = {{ marginTop: 30 }} ><Submit content="Voltar" styleContainer={styles.come_back} styleText={ styles.come_back_text } action={ () => { expandedState(false) } }/></View>
                 </View>
             </Modal>
             

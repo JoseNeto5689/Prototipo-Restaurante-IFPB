@@ -10,7 +10,7 @@ import Exit from "../components/exit";
 import AppLoading from 'expo-app-loading';
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
 
-export default function AddProduct(){
+export default function AddProduct({ exitBtn, exitState }){
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black
       });
@@ -24,7 +24,7 @@ export default function AddProduct(){
     return <Modal animationType="fade" transparent = { true } >
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
-                <View style = { styles.exit } ><Exit/></View>
+                <View style = { styles.exit } ><Exit action={ exitBtn } exitState={ exitState } /></View>
                 <Text style = { [styles.formTitle, { fontFamily: "NunitoSans_900Black" }] } >Adicionar</Text>
                 <Text style = { [styles.formSubTitle, { fontFamily: "NunitoSans_400Regular" }] } >Preencha os campos abaixo para adicionar um novo produto.</Text>
                 <View style = {styles.formContainer} >

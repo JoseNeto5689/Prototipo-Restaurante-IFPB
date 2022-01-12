@@ -1,14 +1,14 @@
 import React from "react"
-import { View, Text, TextInput } from "react-native"
+import { View, TextInput, TouchableHighlight } from "react-native"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faSearch, faFilter, faPen, faBan, faPlus, faCartArrowDown } from "@fortawesome/free-solid-svg-icons"
+import { faSearch, faFilter, faPen, faTimes, faPlus, faCartArrowDown } from "@fortawesome/free-solid-svg-icons"
 import styles from "../styles/style"
 import AppLoading from 'expo-app-loading';
-import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold } from '@expo-google-fonts/nunito-sans';
+import { useFonts, NunitoSans_400Regular } from '@expo-google-fonts/nunito-sans';
 
-export default function ActionBar({ editionMode = false }){
+export default function ActionBar({ editionMode, editeBtn, addProduct, addState }){
     let [fontsLoaded] = useFonts({
-        NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
+        NunitoSans_400Regular
     });
     if (!fontsLoaded) {
         return <AppLoading />;
@@ -23,12 +23,16 @@ export default function ActionBar({ editionMode = false }){
         <View style = {styles.action_button} >
             <FontAwesomeIcon icon={faFilter} size={30} color="#707070"/>
         </View>
-        <View style = {styles.action_button} >
-            <FontAwesomeIcon icon={faPen}size={30} color="#707070"/>
-        </View>
-        <View style = {styles.action_button} >
-            <FontAwesomeIcon icon={faPlus} size={30} color="#707070"/>
-        </View>
+        <TouchableHighlight onPressOut={ () => { editeBtn() } } underlayColor={null} >
+            <View style = {styles.action_button} >
+                { editionMode ? <FontAwesomeIcon icon={faTimes}size={30} color="#707070"/> : <FontAwesomeIcon icon={faPen}size={30} color="#707070"/> }
+            </View>
+        </TouchableHighlight >
+        <TouchableHighlight onPressOut={ () => { addProduct(!addState) } } underlayColor={null}>
+            <View style = {styles.action_button} >
+                <FontAwesomeIcon icon={faPlus} size={30} color="#707070"/>
+            </View>
+        </TouchableHighlight>
         <View style = {styles.action_button} >
             <FontAwesomeIcon icon={faCartArrowDown} size={30} color="#707070"/>
         </View>

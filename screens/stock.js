@@ -14,10 +14,9 @@ const Requests = require("../controllers/request-control")
 //Aplicar o moment no Product
 
 export default function Stock() {
-  let editionMode = false;
-  let addProduct = false
+  const [editionMode, setEditionMode] = useState(false);
+  const [addProduct, setAddProduct] = useState(false)
   let alterProduct = false
-  let productExpanded = true
   const [dados, setDados] = useState()
   const [loading, setLoading] = useState(true)
   useEffect( () => {Requests.list(setDados, setLoading)} , [])
@@ -29,13 +28,13 @@ export default function Stock() {
       {
         loading ? <ActivityIndicator/> : <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
             <Header/>
-            <ActionBar/>
+            <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} />
             { editionMode ? <DeleteButton action={() => {}}/> : null}
             <ProductList values = { dados } editionMode={editionMode}/>
             <Footer/>
-            { addProduct && <AddProduct/> }
+            { addProduct && <AddProduct exitBtn={ setAddProduct } exitState={ addProduct } /> }
             { alterProduct && <AlterProduct/> }
-            { productExpanded && <ExpandedProduct values={dados[0]}/> }
+            
         </View>
       }
     </View> 
