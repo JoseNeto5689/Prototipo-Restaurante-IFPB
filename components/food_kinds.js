@@ -2,14 +2,18 @@ import React, {useState} from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Picker as Pick} from "@react-native-picker/picker"
 
-export default function FoodKinds(){
-    const [foodKind, setFoodKind] = useState();
+export default function FoodKinds({ defaultValue }){
+    const [foodKind, setFoodKind] = useState(defaultValue);
   return (
     <View style = { styles.container } >
         <Pick
-        style = {{ width: 200 }}
+        style = {{ width: 210 }}
         selectedValue={foodKind}
-        onValueChange={(itemValue, itemIndex) => { setFoodKind(itemValue) }}>
+        onValueChange={(itemValue, itemIndex) => { 
+          if(itemValue != 0){
+          setFoodKind(itemValue)
+         }}}>
+          <Pick.Item label="Selecione um tipo" value="0" style = {{ color: "black" }} />
           <Pick.Item style = { styles.item } label='Carboidratos' value = {1}/>
           <Pick.Item style = { styles.item } label='Hortaliças' value = {2}/>
           <Pick.Item style = { styles.item } label='Frutas' value = {3}/>
@@ -33,6 +37,7 @@ const styles = StyleSheet.create({
       borderRadius: 15
     },
     item: {
-        color: "#707070"
+        color: "#707070",
+        fontWeight: "bold"
     }
   })

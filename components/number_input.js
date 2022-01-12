@@ -1,10 +1,11 @@
 import React from "react";
 import NumericInput from "react-native-numeric-input"
 
-export default function NumberInput(){
+export default function NumberInput({ setState }){
+    let num = 0
     return <NumericInput 
-        value={0} 
-        onChange={ () => {} } 
+        value={num} 
+        onChange={ (value) => { setState(value); num = 0 } } 
         rounded minValue={0}
         type="plus-minus"
         iconStyle={{ fontSize: 14, color: 'black' }}

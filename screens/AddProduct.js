@@ -35,7 +35,7 @@ export default function AddProduct({ exitBtn, exitState }){
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Descrição:</Text><TextInput width={200}/>
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 35 }}>Gênero: </Text><FoodKinds/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 25 }}>Gênero: </Text><FoodKinds/>
                     </View>
                     <View style = { styles.row } >
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 40 }}>Quantidade:</Text><NumberInput/>

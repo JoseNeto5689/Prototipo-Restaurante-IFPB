@@ -16,7 +16,7 @@ const Requests = require("../controllers/request-control")
 export default function Stock() {
   const [editionMode, setEditionMode] = useState(false);
   const [addProduct, setAddProduct] = useState(false)
-  let alterProduct = false
+  let alterProduct = true
   const [dados, setDados] = useState()
   const [loading, setLoading] = useState(true)
   useEffect( () => {Requests.list(setDados, setLoading)} , [])
@@ -32,7 +32,7 @@ export default function Stock() {
             { editionMode ? <DeleteButton action={() => {}}/> : null}
             <ProductList values = { dados } editionMode={editionMode}/>
             <Footer/>
-            { addProduct && <AddProduct exitBtn={ setAddProduct } exitState={ addProduct } /> }
+            { addProduct && <AddProduct exitBtn={ setAddProduct } exitState={ addProduct }/> }
             { alterProduct && <AlterProduct/> }
             
         </View>
