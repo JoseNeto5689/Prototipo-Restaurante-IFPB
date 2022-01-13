@@ -8,36 +8,42 @@ import DeleteButton from '../components/delete_button';
 import AddProduct from './AddProduct';
 import AlterProduct from './AlterProduct';
 import ExpandedProduct from './ExpandedProduct';
+import Confirmation from './Confirmation';
 const Requests = require("../controllers/request-control")
 
 
 //Aplicar o moment no Product
 
 export default function Stock() {
+  let [deleteList] = useState([])
+  const [ confirmation, setConfirmation ] = useState(false)
   const [editionMode, setEditionMode] = useState(false);
   const [addProduct, setAddProduct] = useState(false)
-  let alterProduct = false
   const [dados, setDados] = useState()
   const [loading, setLoading] = useState(true)
   useEffect( () => {Requests.list(setDados, setLoading)} , [])
 
     
-  return (
-    <View style={styles.container}>
-      <StatusBar/>
-      {
-        loading ? <ActivityIndicator/> : <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
-            <Header/>
-            <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} />
-            { editionMode ? <DeleteButton action={() => {}}/> : null}
-            <ProductList values = { dados } editionMode={editionMode}/>
-            <Footer/>
-            { addProduct && <AddProduct exitBtn={ setAddProduct } exitState={ addProduct }/> }
-            { alterProduct && <AlterProduct/> }
-            
-        </View>
-      }
-    </View> 
+  return (<>
+    { loading ? <ActivityIndicator/> : <View style={styles.container}>
+    <StatusBar/>
+    <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
+          <Header/>
+          <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} />
+          { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
+          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } />
+          <Footer/>
+          { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct }/> }
+          { confirmation && <Confirmation content={"Tem certeza que deseja excluir esses items? "} option={ 2 } list = { deleteList } action2={ () => { 
+             setLoading(true)
+             Requests.delete(deleteList, () => { Requests.list(setDados, setLoading);setConfirmation(false);setLoading(false)  })
+           } } 
+           cancel={ () => { setConfirmation(false) } }/>}
+    </View>
+    </View>  
+  }
+  </>
+    
   );
 }
 

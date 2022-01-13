@@ -1,6 +1,6 @@
 import React from 'react'; 
 import { View, StyleSheet } from 'react-native';
-import Stock from "./screens/Stock"
+import Stock from './screens/Stock';
 import ExpandedProduct from './screens/ExpandedProduct';
 
 export default function App() {  

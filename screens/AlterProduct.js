@@ -71,7 +71,7 @@ export default function AlterProduct({setState, values}){
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 22 }} >Descrição:</Text><TextInput width={200} defaultValue={ values.product_description } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 37 }}>Gênero: </Text><FoodKinds defaultValue={values.food_kind_id} />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 25 }}>Gênero: </Text><FoodKinds defaultValue={values.food_kind_id} />
                     </View>
                     <View style = { styles.row } >
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 24 }}>Validade:</Text><DataInput defaultValue={ values.expiration_date } />

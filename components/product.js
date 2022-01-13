@@ -11,7 +11,7 @@ import AlterProduct from "../screens/AlterProduct";
 
 const moment = require("moment")
 
-export default function Product({values, editionMode}){
+export default function Product({values, editionMode, list}){
     const [ expandendProduct, setExpandedProduct ] = useState(false)
     const [editproduct, setEditProduct] = useState(false)
     let [fontsLoaded] = useFonts({
@@ -25,7 +25,7 @@ export default function Product({values, editionMode}){
         <TouchableHighlight onPress={ () => { setExpandedProduct(true) } } underlayColor={null} >
             <View style = {{ width: 380, height: 155}}>
             <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] } >
-                {editionMode ? <CheckBox id={values.id}/> : null}
+                {editionMode ? <CheckBox id={values.id} list={ list } /> : null}
                 <Text style = { [styles.tag_name ] } >Nome do Produto</Text>
                 {editionMode ? <TouchableHighlight onPressOut={ () => {setEditProduct(true)} } >
                     <FontAwesomeIcon icon={faPen} size={25} color="white" />

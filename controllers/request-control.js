@@ -22,13 +22,17 @@ class Requests{
             body: JSON.stringify(requestBody)})
     }
 
-    delete(ips){ //Recebe um array como parametro
+    delete(ips, func){ 
+        console.log(ips) //Recebe um array como parametro
         fetch( this.ip + "/stock/delete", { 
         method: "DELETE", 
         headers:{'Content-Type': "application/json"}, 
         body: JSON.stringify({
             id: ips
         })})
+        .then((resp) => resp.json())
+        .then((resp) => console.log(resp))
+        .finally(() => { func() })
     }
     list(setDados, setLoading){ //Precisa da estrutura do ActivityIndicator e do useEffect
         fetch(this.ip + "/stock")
