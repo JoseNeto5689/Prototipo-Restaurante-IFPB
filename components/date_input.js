@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons"
 const moment = require("moment")
 
-export default function DataInput() {  
+export default function DataInput({defaultValue}) {  
     const [show, setShow] = useState(false)
     const [date, setDate] = useState()
     let [fontsLoaded] = useFonts({
@@ -20,7 +20,7 @@ export default function DataInput() {
     return (
         <>
             { show && <DateTimePicker
-            value = {moment().toDate()}
+            value = {moment(defaultValue).toDate()}
             display="calendar"
             style={{width: '80%', height: 50}}
             mode="datetime"

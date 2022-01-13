@@ -10,10 +10,10 @@ import Exit from "../components/exit";
 import AppLoading from 'expo-app-loading';
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
 
-export default function AlterProduct(){
+export default function AlterProduct({setState, values}){
     let [sub, setSub ] = useState(0)
     let [sum, setSum ] = useState(0)
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(values.amount)
     const [quantityChanger, setQuantityChanger] = useState(0)
 
     function quantityModify(quantityChanger){
@@ -60,21 +60,21 @@ export default function AlterProduct(){
     return <Modal animationType="fade" transparent = { true } >
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
-                <View style = { styles.exit } ><Exit action={ () => {  } } /></View>
+                <View style = { styles.exit } ><Exit action={ () => { setState(false) } } /></View>
                 <Text style = { [styles.formTitle, { fontFamily: "NunitoSans_900Black" }] } >Alterar</Text>
                 <Text style = { [styles.formSubTitle, { fontFamily: "NunitoSans_400Regular", width: 300 }] } >Edite os campos a seguir para alterar as informações do produto. </Text>
                 <View style = {styles.formContainer} >
                     <View style = { [styles.row, { marginTop: 15 }] } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput width={240}/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput width={240} defaultValue={ values.product_name } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 22 }} >Descrição:</Text><TextInput width={200}/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 22 }} >Descrição:</Text><TextInput width={200} defaultValue={ values.product_description } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 37 }}>Gênero: </Text><FoodKinds/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 37 }}>Gênero: </Text><FoodKinds defaultValue={values.food_kind_id} />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 24 }}>Validade:</Text><DataInput/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 24 }}>Validade:</Text><DataInput defaultValue={ values.expiration_date } />
                     </View>
                 </View>
                 <View style = { [styles.formContainer, { marginTop: 0 }] } >

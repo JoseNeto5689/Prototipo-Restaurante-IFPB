@@ -16,7 +16,7 @@ const Requests = require("../controllers/request-control")
 export default function Stock() {
   const [editionMode, setEditionMode] = useState(false);
   const [addProduct, setAddProduct] = useState(false)
-  let alterProduct = true
+  let alterProduct = false
   const [dados, setDados] = useState()
   const [loading, setLoading] = useState(true)
   useEffect( () => {Requests.list(setDados, setLoading)} , [])

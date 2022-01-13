@@ -1,7 +1,7 @@
 const connection = require("../Infraestrutura/connection")
 class Stock{
     list(res){
-        const sql = "SELECT product.id, product.product_name, product.product_description,product.amount, food_kinds.food_kind, product.expiration_date FROM product join food_kinds ON product.food_kind = food_kinds.id"
+        const sql = "SELECT product.id, product.product_name, product.product_description,product.amount, food_kinds.food_kind, food_kinds.food_kind_id, product.expiration_date FROM product join food_kinds ON product.food_kind = food_kinds.food_kind_id;"
         connection.query(sql, (erro ,result) => {
             if(erro){
                 res.status(400).json(erro)
@@ -45,7 +45,7 @@ class Stock{
     }
 
     search(res, value){
-        const sql = `SELECT product.id, product.product_name, product.product_description,product.amount, food_kinds.food_kind, product.expiration_date FROM product join food_kinds ON product.food_kind = food_kinds.id WHERE product_name like "%${value}%" OR product_description like "%${value}%"`
+        const sql = `SELECT product.id, product.product_name, product.product_description,product.amount, food_kinds.food_kind, food_kinds.food_kind_id, product.expiration_date FROM product join food_kinds ON product.food_kind = food_kinds.food_kind_id WHERE product_name like "%${value}%" OR product_description like "%${value}%"`
         connection.query(sql, value, (erro, result) => {
             if(erro){
                 res.status(400).json(erro)

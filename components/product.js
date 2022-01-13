@@ -7,11 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons"
 import styles from "../styles/style"
 import ExpandedProduct from "../screens/ExpandedProduct"
+import AlterProduct from "../screens/AlterProduct";
 
 const moment = require("moment")
 
 export default function Product({values, editionMode}){
     const [ expandendProduct, setExpandedProduct ] = useState(false)
+    const [editproduct, setEditProduct] = useState(false)
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
       });
@@ -25,7 +27,9 @@ export default function Product({values, editionMode}){
             <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] } >
                 {editionMode ? <CheckBox id={values.id}/> : null}
                 <Text style = { [styles.tag_name ] } >Nome do Produto</Text>
-                {editionMode ? <FontAwesomeIcon icon={faPen} size={25} color="white" /> : null}
+                {editionMode ? <TouchableHighlight onPressOut={ () => {setEditProduct(true)} } >
+                    <FontAwesomeIcon icon={faPen} size={25} color="white" />
+                </TouchableHighlight> : null}
             </View>
             <View style = { styles.product_name_container } >
                     <ScrollView horizontal = { true } >
@@ -61,6 +65,7 @@ export default function Product({values, editionMode}){
             </View>
         </TouchableHighlight>
         { expandendProduct && <ExpandedProduct values={values} expandedState={ setExpandedProduct } /> }
+        { editproduct && <AlterProduct setState={ setEditProduct } values={ values }/> }
         </>
     }
 }

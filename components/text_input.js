@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native"
 import AppLoading from 'expo-app-loading';
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
 
-export default function InputText({ width, placeholder }){
+export default function InputText({ width, placeholder, defaultValue, setState }){
+    const [ text, setText ] = useState(defaultValue)
     const styles = StyleSheet.create({
         container: {
             height: 32,
@@ -32,7 +33,7 @@ export default function InputText({ width, placeholder }){
     else 
     {
     return <View style = { styles.container } >
-        <TextInput style = {styles.text} placeholder={ placeholder }/>
+        <TextInput style = {styles.text} placeholder={ placeholder } value={ text } onChangeText={ (text) => { setText(text); setState(text) } } />
     </View>
     }
 }
