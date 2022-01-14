@@ -6,8 +6,6 @@ import Footer from '../components/footer';
 import ActionBar from '../components/action_bar';
 import DeleteButton from '../components/delete_button';
 import AddProduct from './AddProduct';
-import AlterProduct from './AlterProduct';
-import ExpandedProduct from './ExpandedProduct';
 import Confirmation from './Confirmation';
 const Requests = require("../controllers/request-control")
 
@@ -33,8 +31,8 @@ export default function Stock() {
           { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
           <ProductList values = { dados } editionMode={editionMode} list={ deleteList } />
           <Footer/>
-          { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct }/> }
-          { confirmation && <Confirmation content={"Tem certeza que deseja excluir esses items? "} option={ 2 } list = { deleteList } action2={ () => { 
+          { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct } reload={ () => { Requests.list(setDados, setLoading) } }/> }
+          { confirmation && <Confirmation content={"Tem certeza que deseja excluir esses items? "} option={ 2 } action={ () => { 
              setLoading(true)
              Requests.delete(deleteList, () => { Requests.list(setDados, setLoading);setConfirmation(false);setLoading(false)  })
            } } 

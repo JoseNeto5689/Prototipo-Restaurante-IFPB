@@ -8,11 +8,16 @@ class Requests{
         return this.ip;
     }
 
-    add(requestBody){
+    add(requestBody, func){
         fetch( this.ip + "/stock/add", { 
             method: "POST", 
             headers:{'Content-Type': "application/json"}, 
-            body: JSON.stringify(requestBody)})
+            body: JSON.stringify(requestBody)
+        })
+        .then((resp) => resp.json())
+        .then((resp) => console.log(resp))
+        .finally(() => { func() })
+            
     }
 
     alter(ip, requestBody){
@@ -22,8 +27,7 @@ class Requests{
             body: JSON.stringify(requestBody)})
     }
 
-    delete(ips, func){ 
-        console.log(ips) //Recebe um array como parametro
+    delete(ips, func){  //Recebe um array como parametro
         fetch( this.ip + "/stock/delete", { 
         method: "DELETE", 
         headers:{'Content-Type': "application/json"}, 

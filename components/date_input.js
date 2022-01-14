@@ -7,9 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons"
 const moment = require("moment")
 
-export default function DataInput({defaultValue}) {  
+export default function DataInput({setState, date = new Date()}) {  
     const [show, setShow] = useState(false)
-    const [date, setDate] = useState()
     let [fontsLoaded] = useFonts({
       NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
     });
@@ -20,14 +19,14 @@ export default function DataInput({defaultValue}) {
     return (
         <>
             { show && <DateTimePicker
-            value = {moment(defaultValue).toDate()}
+            value = {date}
             display="calendar"
             style={{width: '80%', height: 50}}
             mode="datetime"
-            onChange = { (event, date) => { setDate(date);setShow(false) } }
+            onChange = { (event, date) => { setShow(false);setState(date); } }
             /> }
             <View style = { { flexDirection: "row" } } >
-              <TouchableHighlight onPressOut={() => { setShow(true) }} underlayColor={null} style = {{ width: 160, height: 32, alignItems: "center", justifyContent: "center", borderRadius: 15, borderWidth: 2, borderColor: "#707070", marginRight: 12 }}>
+              <TouchableHighlight onPressIn={ () => { setShow(true) } } underlayColor={null} style = {{ width: 160, height: 32, alignItems: "center", justifyContent: "center", borderRadius: 15, borderWidth: 2, borderColor: "#707070", marginRight: 12 }}>
                 <Text style = {{ fontFamily: "NunitoSans_400Regular", color: "#707070", fontSize: 18, textDecorationLine: "underline" }} > { moment(date).format("DD/MM/YYYY") } </Text>
               </TouchableHighlight>
               <FontAwesomeIcon icon={faCalendarAlt} size={32} color='#707070'/>

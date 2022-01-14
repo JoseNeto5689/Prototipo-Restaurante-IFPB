@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Modal, Text } from "react-native";
 import styles from "../styles/style"
 import NumberInput from "../components/number_input";
@@ -8,16 +8,25 @@ import DataInput from "../components/date_input";
 import Submit from "../components/submit";
 import Exit from "../components/exit";
 import AppLoading from 'expo-app-loading';
+import Confirmation from "./Confirmation";
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
+const Requests = require("../controllers/request-control")
+const moment = require("moment")
 
-export default function AddProduct({ exitBtn, exitState }){
+export default function AddProduct({ exitBtn, exitState, reload }){
+    const [productName, setProductName] = useState("")
+    const [productDescription, setProductDescription] = useState("")
+    const [foodKind, setFoodKind] = useState(0)
+    const [amount, setAmount] = useState(0)
+    const [expirationDate, setExpirationDate] = useState(new Date())
+    let [confirmation, setConfirmation] = useState(false)
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black
       });
     
     if (!fontsLoaded) 
     {
-    return <AppLoading />;
+    return <AppLoading/>;
     } 
     else 
     {
@@ -29,26 +38,36 @@ export default function AddProduct({ exitBtn, exitState }){
                 <Text style = { [styles.formSubTitle, { fontFamily: "NunitoSans_400Regular" }] } >Preencha os campos abaixo para adicionar um novo produto.</Text>
                 <View style = {styles.formContainer} >
                     <View style = { [styles.row, { marginTop: 15 }] } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput width={240}/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput setState={ setProductName } width={240}/>
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Descrição:</Text><TextInput width={200}/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Descrição:</Text><TextInput setState = { setProductDescription }  width={200}/>
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 25 }}>Gênero: </Text><FoodKinds/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 25 }}>Gênero: </Text><FoodKinds setState={ setFoodKind } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 40 }}>Quantidade:</Text><NumberInput/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 40 }}>Quantidade:</Text><NumberInput setState={ setAmount } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }}>Validade:</Text><DataInput/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }}>Validade:</Text><DataInput setState={ setExpirationDate } date={ expirationDate } />
                     </View>
                 </View>
                 <View style = {{ marginBottom: 30 }} >
-                    <Submit content="Adicionar" action={() => {}}/>
+                    <Submit content="Adicionar" action={() => { setConfirmation(true) } }/>
                 </View>
             </View>
         </View>
+        { confirmation ? <Confirmation content={"Tem certeza que deseja adicionar esse novo item? "} option={ 3 } cancel={ () => { setConfirmation(false) } } action = { () => {
+            const body = {
+                product_name: productName,
+                product_description: productDescription,
+                food_kind: foodKind,
+                amount: amount,
+                expiration_date: moment(expirationDate).format("YYYY-MM-DD")
+            }
+            Requests.add(body, () => { reload(); setConfirmation(false); exitBtn(false) })
+         } }/> : null } 
     </Modal>
     }
 }

@@ -5,7 +5,7 @@ import Submit from "../components/submit"
 import AppLoading from 'expo-app-loading';
 import { useFonts, NunitoSans_400Regular, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
 
-export default function Confirmation({ content, option, action2, cancel }){
+export default function Confirmation({ content, option, action, cancel }){
     function options(num){
         switch(num){
             case 1: 
@@ -17,14 +17,14 @@ export default function Confirmation({ content, option, action2, cancel }){
             case 2:
                 return (
                     <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20, marginTop: 15 }} >
-                        <Submit content="Excluir" styleContainer={styles.exclude} action={ () => { action2() } } />
+                        <Submit content="Excluir" styleContainer={styles.exclude} action={ () => { action() } } />
                         <Submit content="Cancelar" styleContainer={ styles.cancel1 } action={ () => { cancel() } }/>
                     </View>)
             case 3:
                 return (
                     <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20, marginTop: 15 }} >
-                        <Submit content="Salvar" styleContainer={styles.save} />
-                        <Submit content="Cancelar" styleContainer={ styles.cancel2 } />
+                        <Submit content="Salvar" styleContainer={styles.save} action={ () => {action()} } />
+                        <Submit content="Cancelar" styleContainer={ styles.cancel2 } action={ () => {cancel()} }/>
                     </View>)
         }
     }
