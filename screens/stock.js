@@ -27,7 +27,7 @@ export default function Stock() {
     <StatusBar/>
     <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
           <Header/>
-          <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} />
+          <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} action={ (value) => { Requests.search(value ,setDados, setLoading) } } />
           { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
           <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)} }/>
           <Footer/>

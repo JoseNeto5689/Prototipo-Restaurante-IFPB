@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { View, TextInput, TouchableHighlight } from "react-native"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSearch, faFilter, faPen, faTimes, faPlus, faCartArrowDown } from "@fortawesome/free-solid-svg-icons"
@@ -6,7 +6,8 @@ import styles from "../styles/style"
 import AppLoading from 'expo-app-loading';
 import { useFonts, NunitoSans_400Regular } from '@expo-google-fonts/nunito-sans';
 
-export default function ActionBar({ editionMode, editeBtn, addProduct, addState }){
+export default function ActionBar({ editionMode, editeBtn, addProduct, addState, action }){ 
+    const [ text, setText ] = useState("")
     let [fontsLoaded] = useFonts({
         NunitoSans_400Regular
     });
@@ -15,9 +16,11 @@ export default function ActionBar({ editionMode, editeBtn, addProduct, addState 
     } else {
     return <View style = {styles.action_bar} >
         <View style = { styles.search }>
-            <FontAwesomeIcon icon={faSearch} size={30} color="#707070" style={{ paddingLeft: 20 }}/>
-            <View style = {{ paddingLeft: 5, width: 135 }} >
-                <TextInput style = {{ fontFamily :"NunitoSans_400Regular", fontSize: 20, color: "#707070" }} placeholder="Pesquisar"></TextInput>
+            <TouchableHighlight underlayColor={ null } onPressOut={ () => { action(text) } } >
+                <FontAwesomeIcon icon={faSearch} size={30} color="#707070" style={{ marginLeft: 10, marginRight: 5 }}/>
+            </TouchableHighlight>
+            <View style = {{ width: 130 }} >
+                <TextInput style = {{ fontFamily :"NunitoSans_400Regular", fontSize: 20, color: "#707070" }} value= { text } onChangeText={ (text) => { setText(text) } }  placeholder="Pesquisar"></TextInput>
             </View>
         </View>
         <View style = {styles.action_button} >

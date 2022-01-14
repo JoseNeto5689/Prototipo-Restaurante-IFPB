@@ -38,7 +38,7 @@ export default function ExpandedProduct({values, expandedState}){
                             <Text style = { styles.tag_name }>Gênero Alimenticio</Text>
                         </View>
                         <View style = { styles.product_name_container } >
-                            <Text style = { styles.product_name } >Laticinios</Text>
+                            <Text style = { styles.product_name } >{ values.food_kind }</Text>
                         </View>
                         <View style = { { width: 380, flexDirection: "row" } }>
                             <View>
