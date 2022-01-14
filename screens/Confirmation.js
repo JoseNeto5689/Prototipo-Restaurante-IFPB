@@ -11,8 +11,8 @@ export default function Confirmation({ content, option, action, cancel }){
             case 1: 
                 return (
                     <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20, marginTop: 15 }} >
-                        <Submit content="Confirmar" styleContainer={styles.add} />
-                        <Submit content="Cancelar" styleContainer={ styles.remove } />
+                        <Submit content="Confirmar" styleContainer={styles.add} action={ () => { action() } } />
+                        <Submit content="Cancelar" styleContainer={ styles.remove } action = { () => { cancel() } } />
                     </View>)
             case 2:
                 return (

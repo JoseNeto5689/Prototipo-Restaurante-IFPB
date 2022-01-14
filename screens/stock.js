@@ -29,7 +29,7 @@ export default function Stock() {
           <Header/>
           <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} />
           { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
-          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } />
+          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)} }/>
           <Footer/>
           { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct } reload={ () => { Requests.list(setDados, setLoading) } }/> }
           { confirmation && <Confirmation content={"Tem certeza que deseja excluir esses items? "} option={ 2 } action={ () => { 

@@ -8,11 +8,19 @@ import DataInput from "../components/date_input";
 import Submit from "../components/submit";
 import Exit from "../components/exit";
 import AppLoading from 'expo-app-loading';
+import Confirmation from "./Confirmation";
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
+const moment = require("moment")
+const Requests = require("../controllers/request-control")
 
-export default function AlterProduct({setState, values}){
+export default function AlterProduct({setState, values, reload}){
     let [sub, setSub ] = useState(0)
     let [sum, setSum ] = useState(0)
+    const [productName, setProductName] = useState(values.product_name)
+    const [productDescription, setProductDescription] = useState(values.product_description)
+    const [foodKind, setFoodKind] = useState(values.food_kind_id)
+    const [expirationDate, setExpirationDate] = useState(moment(values.expiration_date).toDate())
+    let [confirmation, setConfirmation] = useState(false)
     const [quantity, setQuantity] = useState(values.amount)
     const [quantityChanger, setQuantityChanger] = useState(0)
 
@@ -65,16 +73,16 @@ export default function AlterProduct({setState, values}){
                 <Text style = { [styles.formSubTitle, { fontFamily: "NunitoSans_400Regular", width: 300 }] } >Edite os campos a seguir para alterar as informações do produto. </Text>
                 <View style = {styles.formContainer} >
                     <View style = { [styles.row, { marginTop: 15 }] } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput width={240} defaultValue={ values.product_name } />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput width={240} setState={ setProductName } defaultValue={ values.product_name } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 22 }} >Descrição:</Text><TextInput width={200} defaultValue={ values.product_description } />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 22 }} >Descrição:</Text><TextInput width={200} setState={ setProductDescription } defaultValue={ values.product_description } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 25 }}>Gênero: </Text><FoodKinds defaultValue={values.food_kind_id} />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 25 }}>Gênero: </Text><FoodKinds setState={ setFoodKind } defaultValue={values.food_kind_id} />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 24 }}>Validade:</Text><DataInput defaultValue={ values.expiration_date } />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 24 }}>Validade:</Text><DataInput setState={setExpirationDate} date={ values.expiration_date } />
                     </View>
                 </View>
                 <View style = { [styles.formContainer, { marginTop: 0 }] } >
@@ -85,10 +93,24 @@ export default function AlterProduct({setState, values}){
                      { quantityModify(quantityChanger) }
                 </View>
                 <View style = {{ marginBottom: 30 }} >
-                    <Submit content="Salvar" action={() => {}}/>
+                    <Submit content="Salvar" action={() => { setConfirmation(true) }}/>
                 </View>
             </View>
         </View>
+        { confirmation ? <Confirmation content={"Tem certeza que deseja adicionar esse novo item? "} option={ 1 } cancel={ () => { setConfirmation(false) } } action={ () => {
+            const body = { 
+                product_name: productName,
+                product_description: productDescription,
+                food_kind: foodKind,
+                amount: quantity,
+                expiration_date: moment(expirationDate).format("YYYY-MM-DD")
+             }
+            Requests.alter(values.id, body, () => { 
+                setConfirmation(false)
+                setState(false)
+                reload()
+             })
+        } } /> : null }
     </Modal>
     }
 }

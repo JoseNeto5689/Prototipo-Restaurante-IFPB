@@ -20,11 +20,14 @@ class Requests{
             
     }
 
-    alter(ip, requestBody){
-        fetch( this.ip + `/stock/alter/${ip}`,{ 
+    alter(id, requestBody, func){
+        fetch( this.ip + `/stock/alter/${id}`,{ 
             method: "PATCH", 
             headers:{'Content-Type': "application/json"}, 
             body: JSON.stringify(requestBody)})
+            .then((resp) => resp.json())
+            .then((resp) => console.log(resp))
+            .finally(() => { func() })
     }
 
     delete(ips, func){  //Recebe um array como parametro

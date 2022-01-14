@@ -11,7 +11,7 @@ import AlterProduct from "../screens/AlterProduct";
 
 const moment = require("moment")
 
-export default function Product({values, editionMode, list}){
+export default function Product({values, editionMode, list, reload}){
     const [ expandendProduct, setExpandedProduct ] = useState(false)
     const [editproduct, setEditProduct] = useState(false)
     let [fontsLoaded] = useFonts({
@@ -65,7 +65,7 @@ export default function Product({values, editionMode, list}){
             </View>
         </TouchableHighlight>
         { expandendProduct && <ExpandedProduct values={values} expandedState={ setExpandedProduct } /> }
-        { editproduct && <AlterProduct setState={ setEditProduct } values={ values }/> }
+        { editproduct && <AlterProduct setState={ setEditProduct } values={ values } reload={ reload } /> }
         </>
     }
 }
