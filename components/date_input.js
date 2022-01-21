@@ -1,21 +1,13 @@
 import React, {useState} from 'react'; 
-import { View, StyleSheet, TouchableHighlight , Text } from 'react-native';
+import { View, TouchableHighlight , Text } from 'react-native';
 import DateTimePicker from "@react-native-community/datetimepicker"
-import AppLoading from 'expo-app-loading';
-import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold } from '@expo-google-fonts/nunito-sans';
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons"
+import styles from "../styles/style"
 const moment = require("moment")
 
 export default function DataInput({setState, date = new Date()}) {  
     const [show, setShow] = useState(false)
-    let [fontsLoaded] = useFonts({
-      NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
-    });
-  
-  if (!fontsLoaded) {
-  return <AppLoading />;
-  } else {
     return (
         <>
             { show && <DateTimePicker
@@ -25,22 +17,16 @@ export default function DataInput({setState, date = new Date()}) {
             mode="datetime"
             onChange = { (event, date) => { setShow(false);setState(date); } }
             /> }
+
             <View style = { { flexDirection: "row" } } >
-              <TouchableHighlight onPressIn={ () => { setShow(true) } } underlayColor={null} style = {{ width: 160, height: 32, alignItems: "center", justifyContent: "center", borderRadius: 15, borderWidth: 2, borderColor: "#707070", marginRight: 12 }}>
-                <Text style = {{ fontFamily: "NunitoSans_400Regular", color: "#707070", fontSize: 18, textDecorationLine: "underline" }} > { moment(date).format("DD/MM/YYYY") } </Text>
+              <TouchableHighlight onPressIn={ () => { setShow(true) } } underlayColor={null} style = { styles.date_box }>
+                <Text style = { styles.date }  > { moment(date).format("DD/MM/YYYY") } </Text>
               </TouchableHighlight>
               <FontAwesomeIcon icon={faCalendarAlt} size={32} color='#707070'/>
             </View>
         </>
   );
 }
-}
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-    }
-  })
+
   
