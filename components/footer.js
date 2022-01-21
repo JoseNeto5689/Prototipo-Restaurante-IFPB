@@ -5,7 +5,8 @@ import { faCalendarAlt, faCubes, faChartLine   } from "@fortawesome/free-solid-s
 import styles from "../styles/style"
   
 export default function PageFooter(){
-    return <View style = {styles.footer} >
+    return (
+    <View style = {styles.footer} >
         <View style = {{ alignItems: "center" }} >
             <FontAwesomeIcon icon = {faCalendarAlt} size={45} color="gray"/>
             <Text style = { styles.footerText } >Refeições</Text>
@@ -19,4 +20,5 @@ export default function PageFooter(){
             <Text style = { styles.footerText } >Presença</Text>
         </View>
     </View>
+    )
 }

@@ -2,8 +2,6 @@ import React from "react"
 import { Modal, Text, View } from "react-native"
 import styles from "../styles/style"
 import Submit from "../components/submit"
-import AppLoading from 'expo-app-loading';
-import { useFonts, NunitoSans_400Regular, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
 
 export default function Confirmation({ content, option, action, cancel }){
     function options(num){
@@ -29,24 +27,13 @@ export default function Confirmation({ content, option, action, cancel }){
         }
     }
 
-    let [fontsLoaded] = useFonts({
-        NunitoSans_400Regular, NunitoSans_900Black
-      });
-    
-    if (!fontsLoaded) 
-    {
-    return <AppLoading />;
-    } 
-    else 
-    {
     return <Modal animationType="fade" transparent = { true } >
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
-                <Text style = { [styles.formTitle, { fontFamily: "NunitoSans_900Black" }] } >Confirmação</Text>
-                <Text style = { [styles.formSubTitle, { fontFamily: "NunitoSans_400Regular", width: 300 }] } >{ content }</Text>
+                <Text style = { styles.formTitle } >Confirmação</Text>
+                <Text style = { [styles.formSubTitle, { width: 300 }] } >{ content }</Text>
                 { options(option) }
             </View>
         </View>
     </Modal>
-    }
 }

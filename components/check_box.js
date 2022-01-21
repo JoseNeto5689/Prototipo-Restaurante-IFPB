@@ -22,11 +22,11 @@ export default function CheckBox({ id, list }){
         }
     }
     return (
-    <TouchableHighlight onPressOut={ () => { action() } } underlayColor={null} >
-        <View style = { styles.check_box } >
-            { check ? <FontAwesomeIcon icon={faCheck} size={20} color="green" /> : null }
-        </View>
-    </TouchableHighlight>
+        <TouchableHighlight onPressOut={ () => { action() } } underlayColor={null} >
+            <View style = { styles.check_box } >
+                { check ? <FontAwesomeIcon icon={faCheck} size={20} color="green" /> : null }
+            </View>
+        </TouchableHighlight>
     )
 }
 

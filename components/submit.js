@@ -12,7 +12,7 @@ export default function Submit({ action, content = "Submit", styleContainer, sty
     return <AppLoading />;
     } else {
     return <TouchableHighlight underlayColor={false} onPressOut={ () => { action() } } style = { [styles.submit_container, styleContainer] }>
-        <Text style = { [styles.submit, { fontFamily: "NunitoSans_700Bold" }, styleText] } >{ content }</Text>
+        <Text style = { [styles.submit, styleText] } >{ content }</Text>
     </TouchableHighlight>
     }
 }

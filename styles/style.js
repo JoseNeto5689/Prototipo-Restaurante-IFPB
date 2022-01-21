@@ -86,6 +86,7 @@ const mocks = StyleSheet.create({
         textAlign: "center",
         color: "white",
         fontSize: 20,
+        fontFamily: "NunitoSans_700Bold"
     },
     modalView: {
         flex: 1,
@@ -105,14 +106,16 @@ const mocks = StyleSheet.create({
     formTitle: {
         color: "#707070",
         fontSize: 30,
-        marginTop: 20
+        marginTop: 20,
+        fontFamily: "NunitoSans_900Black"
     },
     formSubTitle: {
         color: "#707070",
         fontSize: 15,
         textAlign: "center",
         width: 250,
-        marginHorizontal: 40
+        marginHorizontal: 40,
+        fontFamily: "NunitoSans_400Regular" 
     },
     row: {
         flexDirection: "row",
@@ -128,7 +131,8 @@ const mocks = StyleSheet.create({
     submit: {
         color: "white",
         paddingVertical: 5,
-        paddingHorizontal: 25
+        paddingHorizontal: 25,
+        fontFamily: "NunitoSans_700Bold"
     },
     exit: {
         position: "absolute",

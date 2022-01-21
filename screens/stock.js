@@ -23,21 +23,34 @@ export default function Stock() {
 
     
   return (<>
-    { loading ? <ActivityIndicator/> : <View style={styles.container}>
-    <StatusBar/>
-    <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
+    { loading ? <ActivityIndicator/> : 
+    <View style={styles.container}>
+
+      <StatusBar/>
+
+      <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
+
           <Header/>
+
           <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} action={ (value) => { Requests.search(value ,setDados, setLoading) } } />
+          
           { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
+          
           <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)} }/>
+          
           <Footer/>
           { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct } reload={ () => { Requests.list(setDados, setLoading) } }/> }
-          { confirmation && <Confirmation content={"Tem certeza que deseja excluir esses items? "} option={ 2 } action={ () => { 
-             setLoading(true)
-             Requests.delete(deleteList, () => { Requests.list(setDados, setLoading);setConfirmation(false);setLoading(false)  })
-           } } 
-           cancel={ () => { setConfirmation(false) } }/>}
-    </View>
+          
+          { confirmation && <Confirmation content={"Tem certeza que deseja excluir esses items? "} 
+          option={ 2 } 
+          cancel={ () => { setConfirmation(false) } }
+          action={ () => { 
+            setLoading(true)
+            Requests.delete(deleteList, () => { Requests.list(setDados, setLoading);setConfirmation(false);setLoading(false)  })
+          }}/>
+          }
+      </View>
+
     </View>  
   }
   </>
@@ -48,7 +61,6 @@ export default function Stock() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

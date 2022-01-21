@@ -10,13 +10,15 @@ export default function DataInput({setState, date = new Date()}) {
     const [show, setShow] = useState(false)
     return (
         <>
-            { show && <DateTimePicker
-            value = {date}
-            display="calendar"
-            style={{width: '80%', height: 50}}
-            mode="datetime"
-            onChange = { (event, date) => { setShow(false);setState(date); } }
-            /> }
+            { show && 
+            <DateTimePicker
+              value = {date}
+              display="calendar"
+              style={{width: '80%', height: 50}}
+              mode="datetime"
+              onChange = { (event, date) => { setShow(false); setState(date); } }
+            /> 
+            }
 
             <View style = { { flexDirection: "row" } } >
               <TouchableHighlight onPressIn={ () => { setShow(true) } } underlayColor={null} style = { styles.date_box }>

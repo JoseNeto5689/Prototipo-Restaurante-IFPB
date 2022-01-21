@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Text, View, ScrollView, TouchableHighlight } from "react-native";
-import AppLoading from 'expo-app-loading';
-import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold } from '@expo-google-fonts/nunito-sans';
 import CheckBox from "./check_box";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons"
@@ -14,14 +12,7 @@ const moment = require("moment")
 export default function Product({values, editionMode, list, reload}){
     const [ expandendProduct, setExpandedProduct ] = useState(false)
     const [editproduct, setEditProduct] = useState(false)
-    let [fontsLoaded] = useFonts({
-        NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
-      });
-    
-    if (!fontsLoaded) {
-    return <AppLoading />;
-    } else {
-        return <>
+    return <>
         <TouchableHighlight onPress={ () => { setExpandedProduct(true) } } underlayColor={null} >
             <View style = {{ width: 380, height: 155}}>
             <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] } >
@@ -66,6 +57,5 @@ export default function Product({values, editionMode, list, reload}){
         </TouchableHighlight>
         { expandendProduct && <ExpandedProduct values={values} expandedState={ setExpandedProduct } /> }
         { editproduct && <AlterProduct setState={ setEditProduct } values={ values } reload={ reload } /> }
-        </>
-    }
+    </>
 }

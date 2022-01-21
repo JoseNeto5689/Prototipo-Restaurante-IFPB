@@ -7,64 +7,56 @@ import Submit from "../components/submit";
 const moment = require("moment")
 
 export default function ExpandedProduct({values, expandedState}){
-    let [fontsLoaded] = useFonts({
-        NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold
-      });
-    
-    if (!fontsLoaded) {
-    return <AppLoading />;
-    } else {
-        return (
-            <Modal animationType="fade" transparent = { true } >
-                <View style = { styles.modalView } >
-                    <View style = { { borderWidth: 2, borderColor: "#093902", borderRadius: 6 } } >
-                        <View style = { styles.tag_name_container } >
-                            <Text style = { styles.tag_name } >Nome do produto</Text>
-                        </View>
-                        <View style = { styles.product_name_container } >
-                            <ScrollView horizontal = { true } >
-                                <Text style = { styles.product_name } >{ values.product_name }</Text>
-                            </ScrollView>
-                        </View>
-                        <View style = { styles.tag_description_container } >
-                            <Text style = { styles.tag_description } >Descrição do produto</Text>
-                        </View>
-                        <View style = { styles.product_description_container } >
-                            <ScrollView>
-                                <Text style = { styles.product_description } >{ values.product_description }</Text>
-                            </ScrollView>
-                        </View>
-                        <View style = { styles.tag_description_container } >
-                            <Text style = { styles.tag_name }>Gênero Alimenticio</Text>
-                        </View>
-                        <View style = { styles.product_name_container } >
-                            <Text style = { styles.product_name } >{ values.food_kind }</Text>
-                        </View>
-                        <View style = { { width: 380, flexDirection: "row" } }>
-                            <View>
-                                <View style = { [styles.tag_quantity_container, { borderRightWidth: 1 }] } >
-                                    <Text style = { styles.tag_quantity } >Quantidade</Text>
-                                </View>
-                                <View style = { [styles.product_quantity_container, { borderBottomLeftRadius: 5, borderRightWidth: 1  }] } >
-                                    <Text style = { styles.product_quantity } >{values.amount}</Text>
-                                </View>
+    return (
+        <Modal animationType="fade" transparent = { true } >
+            <View style = { styles.modalView } >
+                <View style = { { borderWidth: 2, borderColor: "#093902", borderRadius: 6 } } >
+                    <View style = { styles.tag_name_container } >
+                        <Text style = { styles.tag_name } >Nome do produto</Text>
+                    </View>
+                    <View style = { styles.product_name_container } >
+                        <ScrollView horizontal = { true } >
+                            <Text style = { styles.product_name } >{ values.product_name }</Text>
+                        </ScrollView>
+                    </View>
+                    <View style = { styles.tag_description_container } >
+                        <Text style = { styles.tag_description } >Descrição do produto</Text>
+                    </View>
+                    <View style = { styles.product_description_container } >
+                        <ScrollView>
+                            <Text style = { styles.product_description } >{ values.product_description }</Text>
+                        </ScrollView>
+                    </View>
+                    <View style = { styles.tag_description_container } >
+                        <Text style = { styles.tag_name }>Gênero Alimenticio</Text>
+                    </View>
+                    <View style = { styles.product_name_container } >
+                        <Text style = { styles.product_name } >{ values.food_kind }</Text>
+                    </View>
+                    <View style = { { width: 380, flexDirection: "row" } }>
+                        <View>
+                            <View style = { [styles.tag_quantity_container, { borderRightWidth: 1 }] } >
+                                <Text style = { styles.tag_quantity } >Quantidade</Text>
                             </View>
-                            <View>
-                                <View style = { [styles.tag_quantity_container, { borderLeftWidth: 1 }] } >
-                                    <Text  style = { styles.tag_quantity }  >Validade</Text>
-                                </View>
-                                <View style = { [styles.product_quantity_container, { borderBottomRightRadius: 5, borderLeftWidth: 1 }] }  >
-                                    <Text style = { styles.product_quantity } >{moment(values.expiration_date).format("DD/MM/YYYY")}</Text>
-                                </View>
+                            <View style = { [styles.product_quantity_container, { borderBottomLeftRadius: 5, borderRightWidth: 1  }] } >
+                                <Text style = { styles.product_quantity } >{values.amount}</Text>
+                            </View>
+                        </View>
+                        <View>
+                            <View style = { [styles.tag_quantity_container, { borderLeftWidth: 1 }] } >
+                                <Text  style = { styles.tag_quantity }  >Validade</Text>
+                            </View>
+                            <View style = { [styles.product_quantity_container, { borderBottomRightRadius: 5, borderLeftWidth: 1 }] }  >
+                                <Text style = { styles.product_quantity } >{moment(values.expiration_date).format("DD/MM/YYYY")}</Text>
                             </View>
                         </View>
                     </View>
-                    <View style = {{ marginTop: 30 }} ><Submit content="Voltar" styleContainer={styles.come_back} styleText={ styles.come_back_text } action={ () => { expandedState(false) } }/></View>
                 </View>
-            </Modal>
-            
-        );
-    }
+                <View style = {{ marginTop: 30 }} ><Submit content="Voltar" styleContainer={styles.come_back} styleText={ styles.come_back_text } action={ () => { expandedState(false) } }/></View>
+            </View>
+        </Modal>
+        
+    );
 }
 
 const styles = StyleSheet.create({

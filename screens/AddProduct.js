@@ -34,8 +34,8 @@ export default function AddProduct({ exitBtn, exitState, reload }){
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
                 <View style = { styles.exit } ><Exit action={ exitBtn } exitState={ exitState } /></View>
-                <Text style = { [styles.formTitle, { fontFamily: "NunitoSans_900Black" }] } >Adicionar</Text>
-                <Text style = { [styles.formSubTitle, { fontFamily: "NunitoSans_400Regular" }] } >Preencha os campos abaixo para adicionar um novo produto.</Text>
+                <Text style = { styles.formTitle } >Adicionar</Text>
+                <Text style = { styles.formSubTitle } >Preencha os campos abaixo para adicionar um novo produto.</Text>
                 <View style = {styles.formContainer} >
                     <View style = { [styles.row, { marginTop: 15 }] } >
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput setState={ setProductName } width={240}/>
