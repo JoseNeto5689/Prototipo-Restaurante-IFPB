@@ -9,18 +9,18 @@ import AlterProduct from "../screens/AlterProduct";
 
 const moment = require("moment")
 
-export default function Product({values, editionMode, list, reload}){
+export default function Product({values, editionMode, list, reload, reset}){
     const [ expandendProduct, setExpandedProduct ] = useState(false)
     const [editproduct, setEditProduct] = useState(false)
     return <>
         <TouchableHighlight onPress={ () => { setExpandedProduct(true) } } underlayColor={null} >
             <View style = {{ width: 380, height: 155}}>
             <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] } >
-                {editionMode ? <CheckBox id={values.id} list={ list } /> : null}
+                {editionMode ? <CheckBox id={values.id} list={ list } reset={ reset } /> : null}
                 <Text style = { [styles.tag_name ] } >Nome do Produto</Text>
-                {editionMode ? <TouchableHighlight onPressOut={ () => {setEditProduct(true)} } underlayColor={ null }>
+                {editionMode && list.length === 0 ? <TouchableHighlight onPressOut={ () => {setEditProduct(true)} } underlayColor={ null }>
                     <FontAwesomeIcon icon={faPen} size={25} color="white" />
-                </TouchableHighlight> : null}
+                </TouchableHighlight> : <View style = {{ width: 25, height: 25 }} />}
             </View>
             <View style = { styles.product_name_container } >
                     <ScrollView horizontal = { true } >

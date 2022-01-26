@@ -14,6 +14,7 @@ const Requests = require("../controllers/request-control")
 
 export default function Stock() {
   let [deleteList] = useState([])
+  const [reset, setReset] = useState(0)
   const [ confirmation, setConfirmation ] = useState(false)
   const [editionMode, setEditionMode] = useState(false);
   const [addProduct, setAddProduct] = useState(false)
@@ -36,7 +37,7 @@ export default function Stock() {
           
           { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
           
-          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)} }/>
+          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)}} reset = { () => {setReset(reset+1)} } />
           
           <Footer/>
           { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct } reload={ () => { Requests.list(setDados, setLoading) } }/> }

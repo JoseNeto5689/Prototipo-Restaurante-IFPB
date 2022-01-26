@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
 import styles from "../styles/style"
 
-export default function CheckBox({ id, list }){
+export default function CheckBox({ id, list, reset }){
     const [check, setCheck] = useState(false)
     function action(){
         if(check === true){
             setCheck(false)
+            reset()
             let index = list.indexOf(id)
             if (index !== -1) {
                 list.splice(index, 1);
@@ -17,6 +18,7 @@ export default function CheckBox({ id, list }){
         }
         if(check === false){
             setCheck(true)
+            reset()
             list.push(id)
             return
         }
