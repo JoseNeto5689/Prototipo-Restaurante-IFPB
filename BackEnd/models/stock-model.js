@@ -1,4 +1,4 @@
-const connection = require("../Infraestrutura/connection")
+const connection = require("../infrastructure/connection")
 class Stock{
     list(res){
         const sql = "SELECT product.id, product.product_name, product.product_description,product.amount, food_kinds.food_kind, food_kinds.food_kind_id, product.expiration_date FROM product join food_kinds ON product.food_kind = food_kinds.food_kind_id;"

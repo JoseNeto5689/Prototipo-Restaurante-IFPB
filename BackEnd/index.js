@@ -1,5 +1,5 @@
 const customExpress = require("./config/customExpress")
-const connection = require("./Infraestrutura/connection")
+const connection = require("./infrastructure/connection")
 connection.connect(erro => {
     if(erro){
         console.log("Erro")
