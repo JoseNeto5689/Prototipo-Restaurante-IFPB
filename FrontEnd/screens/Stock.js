@@ -33,22 +33,24 @@ export default function Stock() {
 
           <Header/>
 
-          <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} action={ (value) => { Requests.search(value ,setDados, setLoading) } } />
+          <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} action={ (value) => { Requests.search(value ,setDados, setLoading,dados); }} />
           
           { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
           
-          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)}} reset = { () => {setReset(reset+1)} } />
+          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)}} reset = { () => {setReset(reset+1)/* Gambiarra de reloading */} } />
           
           <Footer/>
           { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct } reload={ () => { Requests.list(setDados, setLoading) } }/> }
           
-          { confirmation && <Confirmation content={"Tem certeza que deseja excluir esses items? "} 
-          option={ 2 } 
-          cancel={ () => { setConfirmation(false) } }
-          action={ () => { 
-            setLoading(true)
-            Requests.delete(deleteList, () => { Requests.list(setDados, setLoading);setConfirmation(false);setLoading(false)  })
-          }}/>
+          { confirmation && 
+          <Confirmation content={"Tem certeza que deseja excluir esses items? "} 
+            option={ 2 } 
+            cancel={ () => { setConfirmation(false) } }
+            action={ () => { 
+              setLoading(true)
+              Requests.delete(deleteList, () => { Requests.list(setDados, setLoading);setConfirmation(false);setLoading(false)  })
+            }}
+          />
           }
       </View>
 

@@ -15,17 +15,24 @@ export default function Product({values, editionMode, list, reload, reset}){
     return <>
         <TouchableHighlight onPress={ () => { setExpandedProduct(true) } } underlayColor={null} >
             <View style = {{ width: 380, height: 155}}>
-            <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] } >
-                {editionMode ? <CheckBox id={values.id} list={ list } reset={ reset } /> : null}
+            <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] }>
+            {editionMode 
+            ? 
+                <CheckBox id={values.id} list={ list } reset={ reset } /> 
+            : 
+            null}
                 <Text style = { [styles.tag_name ] } >Nome do Produto</Text>
-                {editionMode && list.length === 0 ? <TouchableHighlight onPressOut={ () => {setEditProduct(true)} } underlayColor={ null }>
+            {editionMode && list.length === 0 
+            ? 
+                <TouchableHighlight onPressOut={ () => {setEditProduct(true)} } underlayColor={ null }>
                     <FontAwesomeIcon icon={faPen} size={25} color="white" />
-                </TouchableHighlight> : <View style = {{ width: 25, height: 25 }} />}
+                </TouchableHighlight> : <View style = {{ width: 25, height: 25 }} />
+            }
             </View>
             <View style = { styles.product_name_container } >
-                    <ScrollView horizontal = { true } >
-                        <Text style={styles.product_name} >{ values.product_name }</Text>
-                    </ScrollView>
+                <ScrollView horizontal = { true } >
+                    <Text style={styles.product_name} >{ values.product_name }</Text>
+                </ScrollView>
             </View>
             <View style = {{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} >
                 <View style = {{ width: "30%", borderBottomRightRadius: 5 }} >

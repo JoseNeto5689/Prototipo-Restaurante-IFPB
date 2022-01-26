@@ -51,7 +51,7 @@ class Requests{
     search(value, setDados, setLoading){ //Precisa da estrutura do ActivityIndicator e do useEffect
         fetch(this.ip + `/stock/${value}`)
         .then((resp) => resp.json())
-        .then((json) => { setDados(json)})
+        .then((json) => { setDados(json);alert(`Foram encontrados ${json.length} resultados`)})
         .catch(() => { alert("Erro!") })
         .finally(() => { setLoading(false) })
     }
