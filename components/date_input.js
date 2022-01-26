@@ -8,6 +8,7 @@ const moment = require("moment")
 
 export default function DataInput({setState, date = new Date()}) {  
     const [show, setShow] = useState(false)
+    date = moment(date).toDate()
     return (
         <>
             { show && 
@@ -16,7 +17,7 @@ export default function DataInput({setState, date = new Date()}) {
               display="calendar"
               style={{width: '80%', height: 50}}
               mode="datetime"
-              onChange = { (event, date) => { setShow(false); setState(date); } }
+              onChange = { (event, date) => { setShow(false); setState(moment(date).toDate()); } }
             /> 
             }
 
