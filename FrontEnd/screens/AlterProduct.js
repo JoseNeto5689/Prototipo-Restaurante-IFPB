@@ -7,9 +7,7 @@ import TextInput from "../components/text_input"
 import DataInput from "../components/date_input";
 import Submit from "../components/submit";
 import Exit from "../components/exit";
-import AppLoading from 'expo-app-loading';
 import Confirmation from "./Confirmation";
-import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black } from '@expo-google-fonts/nunito-sans';
 const moment = require("moment")
 const Requests = require("../controllers/request-control")
 
@@ -55,16 +53,6 @@ export default function AlterProduct({setState, values, reload}){
                 </>
         }
     }    
-    let [fontsLoaded] = useFonts({
-        NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_900Black
-      });
-    
-    if (!fontsLoaded) 
-    {
-    return <AppLoading />;
-    } 
-    else 
-    {
     return <Modal animationType="fade" transparent = { true } >
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
@@ -113,4 +101,3 @@ export default function AlterProduct({setState, values, reload}){
         } } /> : null }
     </Modal>
     }
-}

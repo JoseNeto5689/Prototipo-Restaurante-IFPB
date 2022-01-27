@@ -1,12 +1,10 @@
 import React from "react";
-import { Text, View, Modal, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback } from "react-native";
-import AppLoading from 'expo-app-loading';
-import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold } from '@expo-google-fonts/nunito-sans';
-import Exit from "../components/exit";
+import { Text, View, Modal, ScrollView, StyleSheet } from "react-native";
 import Submit from "../components/submit";
 const moment = require("moment")
 
 export default function ExpandedProduct({values, expandedState}){
+    //Versão expandida da classe product, com descrição e um modal para sobrepor a tela.
     return (
         <Modal animationType="fade" transparent = { true } >
             <View style = { styles.modalView } >
@@ -44,7 +42,7 @@ export default function ExpandedProduct({values, expandedState}){
                         </View>
                         <View>
                             <View style = { [styles.tag_quantity_container, { borderLeftWidth: 1 }] } >
-                                <Text  style = { styles.tag_quantity }  >Validade</Text>
+                                <Text  style = { styles.tag_quantity } >Validade</Text>
                             </View>
                             <View style = { [styles.product_quantity_container, { borderBottomRightRadius: 5, borderLeftWidth: 1 }] }  >
                                 <Text style = { styles.product_quantity } >{moment(values.expiration_date).format("DD/MM/YYYY")}</Text>
@@ -59,7 +57,7 @@ export default function ExpandedProduct({values, expandedState}){
     );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ //Estilização própria para não gerar conflito com o product
     modalView: {
         flex: 1,
         backgroundColor: "rgba(0, 0, 0, 0.5)",
