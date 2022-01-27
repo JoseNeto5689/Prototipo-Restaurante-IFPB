@@ -1,5 +1,5 @@
-const mysql = require("mysql2")
-const conecction = mysql.createConnection({
+const mysql = require("mysql2") //Importação do BD
+const conecction = mysql.createConnection({ //Parametros do banco de dados
     host: "localhost",
     port: 3306,
     user: "root",
