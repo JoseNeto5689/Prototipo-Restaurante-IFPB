@@ -2,7 +2,7 @@ const connection = require("../infrastructure/connection") //Estabelecendo conex
 class Stock{
     list(res){
         //Query responsável por listar todos os produtos
-        const sql = "SELECT product.id, product.product_name, product.product_description,product.amount, food_kinds.food_kind, food_kinds.food_kind_id, product.expiration_date FROM product join food_kinds ON product.food_kind = food_kinds.food_kind_id;"
+        const sql = "SELECT product.id, product.product_name, product.product_description,product.amount, food_kinds.food_kind, food_kinds.food_kind_id, product.expiration_date FROM product join food_kinds ON product.food_kind = food_kinds.food_kind_id ORDER BY product.id DESC;"
         connection.query(sql, (erro ,result) => {
             if(erro){
                 res.status(400).json(erro)

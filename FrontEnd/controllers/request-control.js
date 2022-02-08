@@ -1,3 +1,4 @@
+import { Alert } from "react-native";
 class Requests{
     ip = "http://192.168.0.105:3000"; //default
     
@@ -51,7 +52,7 @@ class Requests{
     search(value, setDados, setLoading){ //Precisa da estrutura do ActivityIndicator e do useEffect
         fetch(this.ip + `/stock/${value}`)
         .then((resp) => resp.json())
-        .then((json) => { setDados(json);alert(`Foram encontrados ${json.length} resultados`)})
+        .then((json) => { setDados(json); Alert.alert("Aviso", `Foram encontrados ${json.length} resultados`)})
         .catch(() => { alert("Erro!") })
         .finally(() => { setLoading(false) })
     }
