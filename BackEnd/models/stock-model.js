@@ -25,7 +25,7 @@ class Stock{
     }
 
     delete(res, id){
-        //Query que delete 1 ou mais produtos do BD 
+        //Query que deleta 1 ou mais produtos do BD 
         const sql = `delete from product where id IN ${id}`
         connection.query(sql, id, (erro, result) => {
             if(erro){

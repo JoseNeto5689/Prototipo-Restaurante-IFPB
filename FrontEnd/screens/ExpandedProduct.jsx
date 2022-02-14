@@ -4,7 +4,6 @@ import Submit from "../components/submit";
 const moment = require("moment")
 
 export default function ExpandedProduct({values, expandedState}){
-    //Versão expandida da classe product, com descrição e um modal para sobrepor a tela.
     return (
         <Modal animationType="fade" transparent = { true } >
             <View style = { styles.modalView } >
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({ //Estilização própria para não gerar conf
         textAlign: "center",
     },
     tag_quantity_container: {
-        width: 380/2,
+        width: 381/2,
         height: 45,
         backgroundColor: "#0D4E03",
         alignItems: "center",
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({ //Estilização própria para não gerar conf
         textAlign: "center"
     },
     product_quantity_container: {
-        width: 380/2,
+        width: 381/2,
         height: 45,
         backgroundColor: "white",
         alignItems: "center",
