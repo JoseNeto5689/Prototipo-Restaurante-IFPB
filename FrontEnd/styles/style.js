@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
+import { DIMENTIONS } from "react-native-numeric-input";
 const window = Dimensions.get("window");
 
 const mocks = StyleSheet.create({
@@ -21,10 +22,14 @@ const mocks = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "white",
-        borderColor: "#707070",
-        borderTopWidth: 3,
         paddingHorizontal: "5%",
         bottom: 0
+    },
+    footer_line:{
+        width: window.width * 0.3,
+        height: 4,
+        backgroundColor: "#707070",
+        borderRadius: 5
     },
     footerText: {
         fontFamily: "NunitoSans_400Regular", 
