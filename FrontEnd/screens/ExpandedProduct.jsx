@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, View, Modal, ScrollView, StyleSheet } from "react-native";
 import Submit from "../components/submit";
+import { Dimensions } from "react-native";
+const window = Dimensions.get("window")
 const moment = require("moment")
 
 export default function ExpandedProduct({values, expandedState}){

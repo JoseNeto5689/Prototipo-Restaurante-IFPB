@@ -14,7 +14,7 @@ export default function Product({values, editionMode, list, reload, reset}){
     const [editproduct, setEditProduct] = useState(false)
     return <>
         <TouchableHighlight onPress={ () => { setExpandedProduct(true) } } underlayColor={null} >
-            <View style = {{ width: 380, height: 155}}>
+            <View style = { styles.product }>
             <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] }>
             {editionMode 
             ? 

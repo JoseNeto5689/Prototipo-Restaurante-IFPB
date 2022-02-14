@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'; 
-import { StyleSheet, View, StatusBar, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, StatusBar, ActivityIndicator, SafeAreaView } from 'react-native';
 import ProductList from '../components/product_list';
 import Header from '../components/hearder';
 import Footer from '../components/footer';
@@ -25,7 +25,7 @@ export default function Stock() {
     
   return (<>
     { loading ? <ActivityIndicator/> : 
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
       <StatusBar/>
 
@@ -54,7 +54,7 @@ export default function Stock() {
           }
       </View>
 
-    </View>  
+    </SafeAreaView>  
   }
   </>
     
@@ -63,7 +63,8 @@ export default function Stock() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: "100%",
+    height: "100%",
     alignItems: 'center',
     justifyContent: 'center',
   },

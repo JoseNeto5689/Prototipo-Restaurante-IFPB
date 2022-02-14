@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
+const window = Dimensions.get("window");
 
 const mocks = StyleSheet.create({
     header: {
-        width: 410,
+        width: window.width,
         height: 75,
         flexDirection: "row",
         justifyContent: "space-between",
@@ -13,7 +15,7 @@ const mocks = StyleSheet.create({
         paddingHorizontal: "4%"
     },
     footer: {
-        width: 410,
+        width: window.width,
         height: 90,
         flexDirection: "row",
         justifyContent: "space-between",
@@ -30,8 +32,8 @@ const mocks = StyleSheet.create({
         color: "#707070"
     },
     action_button: {
-        width: 45,
-        height: 45,
+        width: window.width/9,
+        height: window.width/9,
         backgroundColor: "white",
         borderWidth: 1,
         borderColor: "#707070",
@@ -41,7 +43,7 @@ const mocks = StyleSheet.create({
         marginHorizontal: 4
     },
     search: {
-        width: 180,
+        width: window.width/2.2,
         height: 45,
         backgroundColor: "white",
         borderWidth: 1,
@@ -57,9 +59,10 @@ const mocks = StyleSheet.create({
         left: 10,
     },
     action_bar: {
-        width: 400,
+        width: window.width,
         flexDirection: "row",
-        marginVertical: 10
+        marginVertical: 10,
+        justifyContent: "center"
     },
     check_box: {
         width: 25,
@@ -72,7 +75,7 @@ const mocks = StyleSheet.create({
         borderRadius: 5,
     },
     delete_button: {
-        width: 250,
+        width: window.width/1.5,
         height: 40,
         backgroundColor: "#00CC00",
         borderRadius: 10,
@@ -182,6 +185,12 @@ const mocks = StyleSheet.create({
         backgroundColor: "red",
         paddingHorizontal: 10
     },
+
+    product: {
+        width: window.width*0.95,
+        height: window.height*0.21
+    },
+
     tag_name_container: {
         width: "100%",
         height: "30%",
