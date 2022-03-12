@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
-import { DIMENTIONS } from "react-native-numeric-input";
 const window = Dimensions.get("window");
 
 const mocks = StyleSheet.create({
@@ -36,32 +35,42 @@ const mocks = StyleSheet.create({
         fontSize: 20, 
         color: "#707070"
     },
-    action_button: {
-        width: window.width/9,
-        height: window.width/9,
-        backgroundColor: "white",
-        borderWidth: 1,
-        borderColor: "#707070",
-        borderRadius: 10,
-        alignItems: "center",
+    action_bar_u: {
+        height: window.width * 0.18,
+        width: window.width,
         justifyContent: "center",
-        marginHorizontal: 4
-    },
-    search: {
-        width: window.width/2.2,
-        height: 45,
-        backgroundColor: "white",
-        borderWidth: 1,
-        borderColor: "#707070",
-        borderRadius: 10,
-        alignItems: "center",
-        justifyContent: "center",
+        alignContent: "center",
         flexDirection: "row",
-        marginHorizontal: 4
+        paddingTop: 10
     },
-    searchIcon: {
-        position: "relative",
-        left: 10,
+    textInput_u: {
+        paddingLeft: 5,
+        fontFamily :"NunitoSans_400Regular", 
+        fontSize: 20, 
+        color: "#707070" 
+    },
+    search_u: {
+        flexDirection: "row",
+        marginLeft: 5,
+        borderWidth: 1,
+        borderColor: "#707070",
+        borderRadius: 10,
+        flexGrow: 0,
+        paddingVertical: 5,
+        alignContent: "center",
+        paddingHorizontal: 10,
+        height: window.width*0.12,
+        marginRight: 4
+    },
+    action_button_u: {
+        width: window.width*0.12,
+        height:  window.width*0.12,
+        borderWidth: 1,
+        borderColor: "#707070",
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        marginHorizontal: 4,
     },
     action_bar: {
         width: window.width,
