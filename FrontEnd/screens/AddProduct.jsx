@@ -26,15 +26,15 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                 <View style = { styles.exit } ><Exit action={ exitBtn } exitState={ exitState } /></View>
                 <Text style = { styles.formTitle } >Adicionar</Text>
                 <Text style = { styles.formSubTitle } >Preencha os campos abaixo para adicionar um novo produto.</Text>
-                <View style = {styles.formContainer} >
+                <View style = {styles.formBox} >
                     <View style = { [styles.row, { marginTop: window.height * 0.02 }] } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05, marginRight: window.width* 0.009 }} >Nome:</Text><TextInput setState={ setProductName } width={240}/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05, marginRight: window.width* 0.02 }} >Nome:</Text><TextInput setState={ setProductName }/>
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05, marginRight: window.width* 0.03 }} >Descrição:</Text><TextInput setState = { setProductDescription }  width={200}/>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05, marginRight: window.width* 0.03 }} >Descrição:</Text><TextInput setState = { setProductDescription } />
                     </View>
-                    <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05, marginRight: window.width* 0.03 }}>Gênero: </Text><FoodKinds setState={ setFoodKind } />
+                    <View style = { styles.row}>
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05 }}>Gênero: </Text><FoodKinds setState={ setFoodKind } />
                     </View>
                     <View style = { styles.row } >
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05, marginRight: window.width* 0.06 }}>Quantidade:</Text><NumberInput setState={ setAmount } />

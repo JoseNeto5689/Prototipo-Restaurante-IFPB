@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { View, TextInput, StyleSheet } from "react-native"
 
-export default function InputText({ width, placeholder, defaultValue, setState }){
+export default function InputText({ placeholder, defaultValue, setState }){
     const [ text, setText ] = useState(defaultValue)
     const styles = StyleSheet.create({
         container: {
             height: 32,
-            width: width,
+            flexGrow: 1,
             borderRadius: 15,
             borderWidth: 2,
             borderColor: "#707070",

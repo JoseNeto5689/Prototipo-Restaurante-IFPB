@@ -122,6 +122,18 @@ const mocks = StyleSheet.create({
         marginTop: 7,
         marginBottom: 8
     },
+    formBox: {
+        borderWidth: 3,
+        borderColor: "#676767",
+        borderRadius: 10,
+        backgroundColor: "white",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        marginHorizontal: window.width * 0.02,
+        marginTop: 7,
+        marginBottom: 8
+    },
+
     formTitle: {
         color: "#707070",
         fontSize: 30,
@@ -139,7 +151,9 @@ const mocks = StyleSheet.create({
     row: {
         flexDirection: "row",
         paddingHorizontal: 15,
-        marginBottom: 15
+        marginBottom: 15,
+        width: window.width * 0.9,
+        justifyContent: "space-between"
     },
     submit_container:{
         backgroundColor: "#00CC00",
@@ -204,12 +218,11 @@ const mocks = StyleSheet.create({
 
     product: {
         width: window.width*0.95,
-        height: window.height*0.21
     },
 
     tag_name_container: {
         width: "100%",
-        height: "30%",
+        height: 45,
         backgroundColor: "#0D4E03",
         alignItems: "center",
         justifyContent: "center",
@@ -230,7 +243,7 @@ const mocks = StyleSheet.create({
     },
     product_name_container: {
         width: "100%",
-        height: "28%",
+        height: 45,
         backgroundColor: "white",
         alignItems: "center",
         justifyContent: "center",
@@ -243,7 +256,8 @@ const mocks = StyleSheet.create({
         fontFamily: "NunitoSans_600SemiBold",
         color: "#707070",
         paddingHorizontal: 10,
-        marginVertical: 0
+        marginVertical: 0,
+
     },
     sides_container: {
         backgroundColor: "#0D4E03",

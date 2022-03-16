@@ -1,6 +1,6 @@
 import { Alert } from "react-native";
 class Requests{
-    ip = "http://192.168.0.105:8086"; //default
+    ip = "http://192.168.0.105:3000"; //default
     
     setIp(ip){
         this.ip = ip;

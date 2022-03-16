@@ -13,6 +13,8 @@ export default function Product({values, editionMode, list, reload, reset}){
     const [ expandendProduct, setExpandedProduct ] = useState(false)
     const [editproduct, setEditProduct] = useState(false)
     return <>
+        { expandendProduct && <ExpandedProduct values={values} expandedState={ setExpandedProduct } /> }
+        { editproduct && <AlterProduct setState={ setEditProduct } values={ values } reload={ reload } /> }
         <TouchableHighlight onPress={ () => { setExpandedProduct(true) } } underlayColor={null} >
             <View style = { styles.product }>
             <View style = { [styles.tag_name_container, editionMode ? null : { justifyContent: "center", alignContent: "center" }] }>
@@ -62,7 +64,5 @@ export default function Product({values, editionMode, list, reload, reset}){
             </View>
             </View>
         </TouchableHighlight>
-        { expandendProduct && <ExpandedProduct values={values} expandedState={ setExpandedProduct } /> }
-        { editproduct && <AlterProduct setState={ setEditProduct } values={ values } reload={ reload } /> }
     </>
 }

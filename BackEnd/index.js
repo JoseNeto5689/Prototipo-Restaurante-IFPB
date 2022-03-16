@@ -6,8 +6,8 @@ connection.connect(erro => {
         console.log("Erro")
     }else{
         const app = customExpress() //Iniciando app modificado
-        app.listen("8086", () => { //Iniciando servidor
-        console.log("Server status: OK\nWorking Port: 8086\n")
+        app.listen("3000", () => { //Iniciando servidor
+        console.log("Server status: OK\nWorking Port: 3000\n")
         })
     }
 })

@@ -10,6 +10,8 @@ import Exit from "../components/exit";
 import Confirmation from "./Confirmation";
 const moment = require("moment")
 const Requests = require("../controllers/request-control")
+import { Dimensions } from "react-native";
+const window = Dimensions.get("window");
 
 export default function AlterProduct({setState, values, reload}){
     let [sub, setSub ] = useState(0)
@@ -59,18 +61,18 @@ export default function AlterProduct({setState, values, reload}){
                 <View style = { styles.exit } ><Exit action={ () => { setState(false) } } /></View>
                 <Text style = { [styles.formTitle, { fontFamily: "NunitoSans_900Black" }] } >Alterar</Text>
                 <Text style = { [styles.formSubTitle, { fontFamily: "NunitoSans_400Regular", width: 300 }] } >Edite os campos a seguir para alterar as informações do produto. </Text>
-                <View style = {styles.formContainer} >
+                <View style = {styles.formBox} >
                     <View style = { [styles.row, { marginTop: 15 }] } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 20 }} >Nome:</Text><TextInput width={240} setState={ setProductName } defaultValue={ productName } />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: window.width * 0.05  }} >Nome:</Text><TextInput setState={ setProductName } defaultValue={ productName } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 22 }} >Descrição:</Text><TextInput width={200} setState={ setProductDescription } defaultValue={ productDescription } />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: window.width * 0.02 }} >Descrição:</Text><TextInput  setState={ setProductDescription } defaultValue={ productDescription } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 25 }}>Gênero: </Text><FoodKinds setState={ setFoodKind } defaultValue={foodKind} />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18,  }}>Gênero: </Text><FoodKinds setState={ setFoodKind } defaultValue={foodKind} />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: 24 }}>Validade:</Text><DataInput setState={setExpirationDate} date={ expirationDate } />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, }}>Validade:</Text><DataInput setState={setExpirationDate} date={ expirationDate } />
                     </View>
                 </View>
                 <View style = { [styles.formContainer, { marginTop: 0 }] } >

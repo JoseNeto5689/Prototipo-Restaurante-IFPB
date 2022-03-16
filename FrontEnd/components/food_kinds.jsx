@@ -1,13 +1,15 @@
 import React, {useState} from 'react'; 
 import { View, StyleSheet } from 'react-native';
 import { Picker as Pick} from "@react-native-picker/picker"
+import { Dimensions } from "react-native";
+const window = Dimensions.get("window");
 
 export default function FoodKinds({ defaultValue, setState }){
     const [foodKind, setFoodKind] = useState(defaultValue);
   return (
     <View style = { styles.container } >
         <Pick
-        style = {{ width: 210 }}
+        style = {{ width: window.width * 0.55 }}
         selectedValue={foodKind}
         onValueChange={(itemValue, itemIndex) => { 
           if(itemValue != 0){
