@@ -118,7 +118,6 @@ const mocks = StyleSheet.create({
         backgroundColor: "white",
         alignItems: "center",
         justifyContent: "center",
-        marginHorizontal: window.width * 0.02,
         marginTop: 7,
         marginBottom: 8
     },
@@ -145,7 +144,7 @@ const mocks = StyleSheet.create({
         fontSize: 15,
         textAlign: "center",
         width: 250,
-        marginHorizontal: 40,
+        marginHorizontal: 0,
         fontFamily: "NunitoSans_400Regular" 
     },
     row: {

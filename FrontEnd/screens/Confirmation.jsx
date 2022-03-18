@@ -31,7 +31,7 @@ export default function Confirmation({ content, option, action, cancel }){
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
                 <Text style = { styles.formTitle } >Confirmação</Text>
-                <Text style = { [styles.formSubTitle, { width: 300 }] } >{ content }</Text>
+                <Text style = { [styles.formSubTitle, { paddingHorizontal: 20, marginHorizontal: 40 }] } >{ content }</Text>
                 { options(option) }
             </View>
         </View>

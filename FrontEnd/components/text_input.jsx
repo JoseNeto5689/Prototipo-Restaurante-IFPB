@@ -11,7 +11,8 @@ export default function InputText({ placeholder, defaultValue, setState }){
             borderWidth: 2,
             borderColor: "#707070",
             justifyContent: "center",
-            alignContent: "center"
+            alignContent: "center",
+            flexBasis: 1
         },
         text: {
             paddingHorizontal: 10,
@@ -20,6 +21,6 @@ export default function InputText({ placeholder, defaultValue, setState }){
         }
     })
     return <View style = { styles.container } >
-        <TextInput style = {styles.text} placeholder={ placeholder } value={ text } onChangeText={ (text) => { setText(text); setState(text) } } />
+        <TextInput style = {styles.text} placeholder={ placeholder } value={ text } onChangeText={ (text) => { setText(text); setState(text) } }  />
     </View>
 }

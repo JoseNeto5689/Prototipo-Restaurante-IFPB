@@ -66,7 +66,7 @@ export default function AlterProduct({setState, values, reload}){
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: window.width * 0.05  }} >Nome:</Text><TextInput setState={ setProductName } defaultValue={ productName } />
                     </View>
                     <View style = { styles.row } >
-                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: window.width * 0.02 }} >Descrição:</Text><TextInput  setState={ setProductDescription } defaultValue={ productDescription } />
+                        <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18, marginRight: window.width * 0.02 }} >Descrição:</Text><TextInput setState={ setProductDescription } defaultValue={ productDescription } />
                     </View>
                     <View style = { styles.row } >
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: 18,  }}>Gênero: </Text><FoodKinds setState={ setFoodKind } defaultValue={foodKind} />
