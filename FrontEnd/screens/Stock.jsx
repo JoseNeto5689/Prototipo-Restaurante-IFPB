@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'; 
-import { StyleSheet, View, StatusBar, ActivityIndicator, SafeAreaView } from 'react-native';
+import { StyleSheet, View, StatusBar, ActivityIndicator, SafeAreaView, Alert } from 'react-native';
 import ProductList from '../components/product_list';
 import Header from '../components/hearder';
 import Footer from '../components/footer';
@@ -13,9 +13,9 @@ const Requests = require("../controllers/request-control")
 //Aplicar o moment no Product
 
 export default function Stock() {
-  let [deleteList] = useState([])
+  let [deleteList, setList] = useState([])
   const [reset, setReset] = useState(0)
-  const [ confirmation, setConfirmation ] = useState(false)
+  const [confirmation, setConfirmation ] = useState(false)
   const [editionMode, setEditionMode] = useState(false);
   const [addProduct, setAddProduct] = useState(false)
   const [dados, setDados] = useState()
@@ -33,23 +33,52 @@ export default function Stock() {
 
           <Header/>
 
-          <ActionBar editionMode={editionMode} editeBtn = { () => { setEditionMode(!editionMode) } } addProduct={setAddProduct} addState={addProduct} action={ (value) => { Requests.search(value ,setDados, setLoading,dados); }} />
+          <ActionBar editionMode={editionMode} 
+            editeBtn = { () => { setEditionMode(!editionMode) } } 
+            addProduct={setAddProduct} 
+            addState={addProduct} 
+            action={ (value) => { Requests.search(value ,setDados, setLoading,dados); }} 
+          />
           
-          { editionMode ? <DeleteButton action={() => { setConfirmation(true) }}/> : null}
+          { editionMode
+          ? 
+          <DeleteButton action={() => { 
+            if(deleteList.length === 0){
+              Alert.alert("Aviso", "Nenhum item selecionado para deleção")
+            }
+            else {
+              setConfirmation(true)
+            }
+           }}/> 
+          : 
+          null}
           
-          <ProductList values = { dados } editionMode={editionMode} list={ deleteList } reload={ () => {Requests.list(setDados, setLoading)}} reset = { () => {setReset(reset+1)/* Gambiarra de reloading */} } />
+          <ProductList 
+            values = { dados } 
+            editionMode={editionMode} 
+            list={ deleteList } 
+            reload={ () => {Requests.list(setDados, setLoading)}} 
+            reset = { () => {setReset(reset+1)/* Gambiarra de reloading */} } 
+          />
           
           <Footer/>
+          
           { addProduct && <AddProduct exitBtn={ setAddProduct } exitState = { addProduct } reload={ () => { Requests.list(setDados, setLoading) } }/> }
           
           { confirmation && 
-          <Confirmation content={"Tem certeza que deseja excluir esses items? "} 
-            option={ 2 } 
-            cancel={ () => { setConfirmation(false) } }
-            action={ () => { 
-              setLoading(true)
-              Requests.delete(deleteList, () => { Requests.list(setDados, setLoading);setConfirmation(false);setLoading(false)  })
-            }}
+            <Confirmation content={"Tem certeza que deseja excluir esses items? "} 
+              option={ 2 } 
+              cancel={ () => { setConfirmation(false) } }
+              action={ () => { 
+                setLoading(true) //Iniciando Loading para realizar requisição a API. 
+                Requests.delete(deleteList, () => { //Apagando Dados
+                  //Processo de Reload da página
+                  setList([]);//Limpando lista de itens deletados.
+                  Requests.list(setDados, setLoading); //Recarregando página. 
+                  setConfirmation(false); //Desabilitando tela de confirmação
+                  setLoading(false);  
+                })
+              }}
           />
           }
       </View>
@@ -63,8 +92,7 @@ export default function Stock() {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },

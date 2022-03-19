@@ -31,12 +31,12 @@ class Requests{
             .finally(() => { func() })
     }
 
-    delete(ips, func){  //Recebe um array como parametro
+    delete(ids, func){  //Recebe um array como parametro
         fetch( this.ip + "/stock/delete", { 
         method: "DELETE", 
         headers:{'Content-Type': "application/json"}, 
         body: JSON.stringify({
-            id: ips
+            id: ids
         })})
         .then((resp) => resp.json())
         .then((resp) => console.log(resp))
