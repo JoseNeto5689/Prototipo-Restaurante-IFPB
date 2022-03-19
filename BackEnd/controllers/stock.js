@@ -9,6 +9,10 @@ module.exports = app => {
         Stock.search(res, value)
     })
 
+    app.get("/food_kinds", (req, res) => { //Requisição para listar todos os generos alimenticios
+        Stock.getFoodKinds(res)
+    })
+
     app.post("/stock/add", (req, res) => { //Requisição que permite adicionar um produto ao banco de dados
         const values = req.body
         Stock.add(res, values)
