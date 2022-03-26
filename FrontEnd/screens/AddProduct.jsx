@@ -56,7 +56,7 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                 amount: amount,
                 expiration_date: moment(expirationDate).format("YYYY-MM-DD")
             }
-            Requests.add(body, () => { reload(); setConfirmation(false); exitBtn(false) })
+            Requests.verify(body, () => { reload(); setConfirmation(false); exitBtn(false) })
          } }/> : null } 
     </Modal>
     }

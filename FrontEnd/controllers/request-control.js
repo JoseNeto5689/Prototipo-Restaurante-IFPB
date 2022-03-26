@@ -57,6 +57,26 @@ class Requests{
         .finally(() => { setLoading(false) })
     }
 
+    verify(requestBody, func){
+        fetch(this.ip + "/products")
+        .then((resp) =>resp.json())
+        .then((resp) => { 
+            let error = 0
+            resp.forEach((item) => {
+                if(item.product_name == requestBody.product_name){
+                    error = 1
+                }
+            }) 
+            if(error == 0){
+                this.add(requestBody, func)
+            }
+            else{
+                alert("Erro, já existe um produto com esse nome!")
+                func()
+            }
+            })
+    }
+
 }
 
 module.exports = new Requests()

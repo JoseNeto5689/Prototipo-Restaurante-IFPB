@@ -13,6 +13,10 @@ module.exports = app => {
         Stock.getFoodKinds(res)
     })
 
+    app.get("/products", (req, res) => {
+        Stock.listProducts(res)
+    })
+
     app.post("/stock/add", (req, res) => { //Requisição que permite adicionar um produto ao banco de dados
         const values = req.body
         Stock.add(res, values)

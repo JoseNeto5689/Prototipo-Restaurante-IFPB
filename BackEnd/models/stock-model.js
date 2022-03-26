@@ -70,6 +70,17 @@ class Stock{
             }
         })
     }
+
+    listProducts(res){
+        const sql = 'SELECT product_name FROM product;'
+        connection.query(sql, (erro, result) => {
+            if(erro){
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json(result)
+            }
+        })
+    }
 }
 
 module.exports = new Stock()
