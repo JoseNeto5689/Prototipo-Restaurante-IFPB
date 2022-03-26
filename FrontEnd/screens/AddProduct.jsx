@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Modal, Text } from "react-native";
+import { View, Modal, Text, Alert } from "react-native";
 import styles from "../styles/style"
 import NumberInput from "../components/number_input";
 import FoodKinds from "../components/food_kinds";
@@ -11,7 +11,26 @@ import Confirmation from "./Confirmation";
 const Requests = require("../controllers/request-control")
 const moment = require("moment")
 import { Dimensions } from "react-native";
+import { faTruckMonster } from "@fortawesome/free-solid-svg-icons";
 const window = Dimensions.get("window");
+let body
+
+function checkBody(body){
+    let error = ""
+    if(body.product_name == ""){
+        error += "*Preencha o campo de nome\n"
+    }
+    if(body.product_description == ""){
+        error += "*Preencha o campo de descrição \n"
+    }
+    if(body.amount == 0){
+        error += "*Insira alguma quantidade\n"
+    }
+    if(body.food_kind == 0){
+        error += "*Selecione algum genero alimenticio\n"
+    }
+    return error
+}
 
 export default function AddProduct({ exitBtn, exitState, reload }){
     const [productName, setProductName] = useState("")
@@ -44,18 +63,27 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                     </View>
                 </View>
                 <View style = {{ marginBottom: 30 }} >
-                    <Submit content="Adicionar" action={() => { setConfirmation(true) } }/>
+                    <Submit content="Adicionar" action={() => { 
+                        body = {
+                            product_name: productName,
+                            product_description: productDescription,
+                            food_kind: foodKind,
+                            amount: amount,
+                            expiration_date: moment(expirationDate).format("YYYY-MM-DD")
+                        }
+                        if(checkBody(body) == "")
+                        {
+                            setConfirmation(true)                        
+                        }
+                        else
+                        {
+                            Alert.alert("Erro", checkBody(body))
+                        }
+                        } }/>
                 </View>
             </View>
         </View>
         { confirmation ? <Confirmation content={"Tem certeza que deseja adicionar esse novo item? "} option={ 3 } cancel={ () => { setConfirmation(false) } } action = { () => {
-            const body = {
-                product_name: productName,
-                product_description: productDescription,
-                food_kind: foodKind,
-                amount: amount,
-                expiration_date: moment(expirationDate).format("YYYY-MM-DD")
-            }
             Requests.verify(body, () => { reload(); setConfirmation(false); exitBtn(false) })
          } }/> : null } 
     </Modal>
