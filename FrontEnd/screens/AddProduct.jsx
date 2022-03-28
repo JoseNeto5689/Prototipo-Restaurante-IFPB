@@ -11,9 +11,7 @@ import Confirmation from "./Confirmation";
 const Requests = require("../controllers/request-control")
 const moment = require("moment")
 import { Dimensions } from "react-native";
-import { faTruckMonster } from "@fortawesome/free-solid-svg-icons";
 const window = Dimensions.get("window");
-let body
 
 function checkBody(body){
     let error = ""
@@ -33,6 +31,7 @@ function checkBody(body){
 }
 
 export default function AddProduct({ exitBtn, exitState, reload }){
+    const [body, setBody] = useState({})
     const [productName, setProductName] = useState("")
     const [productDescription, setProductDescription] = useState("")
     const [foodKind, setFoodKind] = useState(0)
@@ -64,13 +63,13 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                 </View>
                 <View style = {{ marginBottom: 30 }} >
                     <Submit content="Adicionar" action={() => { 
-                        body = {
+                        setBody({
                             product_name: productName,
                             product_description: productDescription,
                             food_kind: foodKind,
                             amount: amount,
                             expiration_date: moment(expirationDate).format("YYYY-MM-DD")
-                        }
+                        })
                         if(checkBody(body) == "")
                         {
                             setConfirmation(true)                        
