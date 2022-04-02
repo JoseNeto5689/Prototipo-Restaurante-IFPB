@@ -6,22 +6,22 @@ import styles from "../styles/style"
   
 export default function PageFooter(){
     return (
-        <>
-        <View style = { styles.footer_line } />
-        <View style = {styles.footer} >
-            <View style = {{ alignItems: "center" }} >
-                <FontAwesomeIcon icon = {faCalendarAlt} size={45} color="gray"/>
-                <Text style = { styles.footerText } >Refeições</Text>
-            </View>
-            <View style = {{ alignItems: "center" }}>
-                <FontAwesomeIcon icon = {faCubes} size={45} color="gray"/>
-                <Text style = { styles.footerText } >Estoque</Text>
-            </View>
-            <View style = {{ alignItems: "center" }}>
-                <FontAwesomeIcon icon = {faChartLine} size={45} color="gray"/>
-                <Text style = { styles.footerText } >Presença</Text>
+        <View style = {{ width: "100%", alignItems: 'center'}}>
+            <View style = { styles.footer_line } />
+            <View style = {styles.footer} >
+                <View style = {{ alignItems: "center" }} >
+                    <FontAwesomeIcon icon = {faCalendarAlt} size={45} color="gray"/>
+                    <Text style = { styles.footerText } >Refeições</Text>
+                </View>
+                <View style = {{ alignItems: "center" }}>
+                    <FontAwesomeIcon icon = {faCubes} size={45} color="gray"/>
+                    <Text style = { styles.footerText } >Estoque</Text>
+                </View>
+                <View style = {{ alignItems: "center" }}>
+                    <FontAwesomeIcon icon = {faChartLine} size={45} color="gray"/>
+                    <Text style = { styles.footerText } >Presença</Text>
+                </View>
             </View>
         </View>
-        </>
     )
 }

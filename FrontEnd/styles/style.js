@@ -28,7 +28,10 @@ const mocks = StyleSheet.create({
         width: window.width * 0.3,
         height: 4,
         backgroundColor: "#707070",
-        borderRadius: 5
+        borderRadius: 5,
+        justifyContent: "center",
+        alignContent: "center"
+        
     },
     footerText: {
         fontFamily: "NunitoSans_400Regular", 
@@ -322,6 +325,16 @@ const mocks = StyleSheet.create({
         borderWidth: 2, 
         borderColor: "#707070", 
         marginRight: 12 
+    },
+    out_stock:{
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    out_stock_text: {
+        marginTop: 5,
+        color: "#707070",
+        fontFamily: "NunitoSans_400Regular",
+        fontSize: 20
     }
 
 })

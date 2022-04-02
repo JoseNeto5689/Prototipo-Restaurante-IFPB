@@ -57,7 +57,7 @@ class Requests{
         .finally(() => { setLoading(false) })
     }
 
-    verify(requestBody, func){
+    verify(requestBody, exitFunc, func){
         fetch(this.ip + "/products")
         .then((resp) =>resp.json())
         .then((resp) => { 
@@ -68,11 +68,11 @@ class Requests{
                 }
             }) 
             if(error == 0){
-                this.add(requestBody, func)
+                this.add(requestBody, exitFunc)
             }
             else{
                 alert("Erro, já existe um produto com esse nome!")
-                func()
+                exitFunc()
             }
             })
     }

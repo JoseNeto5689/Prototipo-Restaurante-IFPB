@@ -29,30 +29,31 @@ export default function Stock() {
 
       <StatusBar/>
 
-      <View style = { { flex: 1, alignItems: "center", justifyContent: "center" } }>
+      <View style = { { flex: 1, alignItems: "center", justifyContent: "space-between" } }>
 
-          <Header/>
-
-          <ActionBar editionMode={editionMode} 
-            editeBtn = { () => { setEditionMode(!editionMode) } } 
-            addProduct={setAddProduct} 
-            addState={addProduct} 
-            action={ (value) => { Requests.search(value ,setDados, setLoading,dados); }} 
-          />
-          
-          { editionMode
-          ? 
-          <DeleteButton action={() => { 
-            if(deleteList.length === 0){
-              Alert.alert("Aviso", "Nenhum item selecionado para deleção")
-            }
-            else {
-              setConfirmation(true)
-            }
-           }}/> 
-          : 
-          null}
-          
+          <View>
+            <Header/>
+            <ActionBar editionMode={editionMode}
+              editeBtn = { () => { setEditionMode(!editionMode) } }
+              addProduct={setAddProduct}
+              addState={addProduct}
+              action={ (value) => { Requests.search(value ,setDados, setLoading,dados); }}
+            />
+            
+            { editionMode
+            ?
+            <DeleteButton action={() => {
+              if(deleteList.length === 0){
+                Alert.alert("Aviso", "Nenhum item selecionado para deleção")
+              }
+              else {
+                setConfirmation(true)
+              }
+             }}/>
+            :
+            null}
+            
+          </View>
           <ProductList 
             values = { dados } 
             editionMode={editionMode} 

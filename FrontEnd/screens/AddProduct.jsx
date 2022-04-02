@@ -11,7 +11,6 @@ import Confirmation from "./Confirmation";
 const Requests = require("../controllers/request-control")
 const moment = require("moment")
 import { Dimensions } from "react-native";
-import { faTruckMonster } from "@fortawesome/free-solid-svg-icons";
 const window = Dimensions.get("window");
 let body
 
