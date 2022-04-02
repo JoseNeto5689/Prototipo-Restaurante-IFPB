@@ -57,21 +57,26 @@ class Requests{
         .finally(() => { setLoading(false) })
     }
 
-    verify(requestBody, exitFunc, func){
+    verify(requestBody, exitFunc, id){
         fetch(this.ip + "/products")
         .then((resp) =>resp.json())
         .then((resp) => { 
-            let error = 0
-            resp.forEach((item) => {
-                if(item.product_name == requestBody.product_name){
-                    error = 1
-                }
-            }) 
-            if(error == 0){
+            let error = false
+            if(id == null){
+                resp.forEach((item) => {
+                    if(item.product_name == requestBody.product_name){
+                        error = true
+                    }
+                }) 
+            }
+            if(!error && id == null){
                 this.add(requestBody, exitFunc)
             }
+            else if(!error && id != null){
+                this.alter(id, requestBody, exitFunc)
+            }
             else{
-                alert("Erro, já existe um produto com esse nome!")
+                Alert.alert("Erro","Já existe um produto com esse nome!")
                 exitFunc()
             }
             })
