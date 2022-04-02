@@ -31,7 +31,7 @@ export default function Stock() {
 
       <View style = { { flex: 1, alignItems: "center", justifyContent: "space-between" } }>
 
-          <View>
+          <View style = {{ alignItems: "center" }} >
             <Header/>
             <ActionBar editionMode={editionMode}
               editeBtn = { () => { setEditionMode(!editionMode) } }
