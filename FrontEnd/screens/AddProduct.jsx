@@ -82,7 +82,7 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                 </View>
             </View>
         </View>
-        { confirmation ? <Confirmation content={"Tem certeza que deseja adicionar esse novo item? "} option={ 3 } cancel={ () => { setConfirmation(false) } } action = { () => {
+        { confirmation ? <Confirmation content={"Tem certeza que deseja adicionar esse novo item? "} actionText = { "Confirmar" } cancel={ () => { setConfirmation(false) } } action = { () => {
             Requests.verify(body, () => { reload(); setConfirmation(false); exitBtn(false) })
          } }/> : null } 
     </Modal>

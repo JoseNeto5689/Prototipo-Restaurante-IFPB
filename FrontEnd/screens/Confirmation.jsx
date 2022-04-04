@@ -3,36 +3,16 @@ import { Modal, Text, View } from "react-native"
 import styles from "../styles/style"
 import Submit from "../components/submit"
 
-export default function Confirmation({ content, option, action, cancel }){
-    function options(num){
-        switch(num){
-            case 1: 
-                return (
-                    <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20, marginTop: 15 }} >
-                        <Submit content="Confirmar" styleContainer={styles.add} action={ () => { action() } } />
-                        <Submit content="Cancelar" styleContainer={ styles.remove } action = { () => { cancel() } } />
-                    </View>)
-            case 2:
-                return (
-                    <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20, marginTop: 15 }} >
-                        <Submit content="Excluir" styleContainer={styles.exclude} action={ () => { action() } } />
-                        <Submit content="Cancelar" styleContainer={ styles.cancel1 } action={ () => { cancel() } }/>
-                    </View>)
-            case 3:
-                return (
-                    <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20, marginTop: 15 }} >
-                        <Submit content="Salvar" styleContainer={styles.save} action={ () => {action()} } />
-                        <Submit content="Cancelar" styleContainer={ styles.cancel2 } action={ () => {cancel()} }/>
-                    </View>)
-        }
-    }
-
+export default function Confirmation({ content, option, action, cancel, actionText }){
     return <Modal animationType="fade" transparent = { true } >
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
                 <Text style = { styles.formTitle } >Confirmação</Text>
                 <Text style = { [styles.formSubTitle, { paddingHorizontal: 20, marginHorizontal: 40 }] } >{ content }</Text>
-                { options(option) }
+                <View style = {styles.confirmation_options} >
+                    <Submit content={actionText} styleText = { styles.optionText } styleContainer={styles.confirm } action={ () => { action() } } />
+                    <Submit content="Cancelar" styleText = { styles.optionText } styleContainer={ styles.cancel } action = { () => { cancel() } } />
+                </View>
             </View>
         </View>
     </Modal>

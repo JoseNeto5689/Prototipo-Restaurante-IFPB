@@ -161,7 +161,9 @@ const mocks = StyleSheet.create({
         backgroundColor: "#00CC00",
         borderColor: "#0D4E03",
         borderWidth: 2,
-        borderRadius: 5
+        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: "center"
     },
     submit: {
         color: "white",
@@ -201,21 +203,21 @@ const mocks = StyleSheet.create({
         marginTop: 5
 
     },
-    exclude: {
-        backgroundColor: "red",
-        paddingHorizontal: 10,
-        marginRight: 35
-    }, 
-    cancel1: {
 
+    confirm: {
+        backgroundColor: "#00CC00",
+        width: window.width * 0.3,
+        height: window.height * 0.04,
+        marginRight: 30
     },
-    save: {
-        paddingHorizontal: 15,
-        marginRight: 35
-    },
-    cancel2: {
+    cancel: {
         backgroundColor: "red",
-        paddingHorizontal: 10
+        width: window.width * 0.3,
+        height: window.height * 0.04
+    },
+
+    optionText: {
+    fontSize: 13  
     },
 
     product: {
@@ -335,6 +337,13 @@ const mocks = StyleSheet.create({
         color: "#707070",
         fontFamily: "NunitoSans_400Regular",
         fontSize: 20
+    },
+    confirmation_options: {
+        flexDirection: "row", 
+        justifyContent: "space-between", 
+        paddingHorizontal: 10, 
+        marginBottom: 20, 
+        marginTop: 15
     }
 
 })

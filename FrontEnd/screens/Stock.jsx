@@ -68,7 +68,7 @@ export default function Stock() {
           
           { confirmation && 
             <Confirmation content={"Tem certeza que deseja excluir esses items? "} 
-              option={ 2 } 
+              actionText = { "Deletar" }
               cancel={ () => { setConfirmation(false) } }
               action={ () => { 
                 setLoading(true) //Iniciando Loading para realizar requisição a API. 

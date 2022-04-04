@@ -121,7 +121,7 @@ export default function AlterProduct({setState, values, reload}){
                 </View>
             </View>
         </View>
-        { confirmation ? <Confirmation content={"Tem certeza que deseja adicionar esse novo item? "} option={ 1 } cancel={ () => { setConfirmation(false) } } action={ () => {
+        { confirmation ? <Confirmation content={"Tem certeza que deseja adicionar esse novo item? "} actionText = { "Alterar" } cancel={ () => { setConfirmation(false) } } action={ () => {
             Requests.verify(body, () => { 
                 setConfirmation(false)
                 setState(false)
