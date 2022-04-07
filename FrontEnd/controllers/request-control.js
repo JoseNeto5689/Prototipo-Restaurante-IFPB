@@ -5,9 +5,6 @@ class Requests{
     setIp(ip){
         this.ip = ip;
     }
-    getIp(){
-        return this.ip;
-    }
 
     add(requestBody, func){
         fetch( this.ip + "/stock/add", { 
@@ -80,6 +77,22 @@ class Requests{
                 exitFunc()
             }
             })
+    }
+    checkBody(body){
+        let error = ""
+        if(body.product_name == ""){
+            error += "*Preencha o campo de nome\n"
+        }
+        if(body.product_description == ""){
+            error += "*Preencha o campo de descrição \n"
+        }
+        if(body.amount == 0){
+            error += "*Insira alguma quantidade\n"
+        }
+        if(body.food_kind == 0){
+            error += "*Selecione algum genero alimenticio\n"
+        }
+        return error
     }
 
 }

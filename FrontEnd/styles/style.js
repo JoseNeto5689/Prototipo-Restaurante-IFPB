@@ -217,7 +217,7 @@ const mocks = StyleSheet.create({
     },
 
     optionText: {
-    fontSize: 13  
+        fontSize: 13  
     },
 
     product: {
@@ -344,6 +344,12 @@ const mocks = StyleSheet.create({
         paddingHorizontal: 10, 
         marginBottom: 20, 
         marginTop: 15
+    },
+    amount_options: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingHorizontal: 10,
+        marginBottom: 20
     }
 
 })

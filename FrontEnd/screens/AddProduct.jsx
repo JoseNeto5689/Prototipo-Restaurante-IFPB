@@ -13,31 +13,14 @@ const moment = require("moment")
 import { Dimensions } from "react-native";
 const window = Dimensions.get("window");
 
-function checkBody(body){
-    let error = ""
-    if(body.product_name == ""){
-        error += "*Preencha o campo de nome\n"
-    }
-    if(body.product_description == ""){
-        error += "*Preencha o campo de descrição \n"
-    }
-    if(body.amount == 0){
-        error += "*Insira alguma quantidade\n"
-    }
-    if(body.food_kind == 0){
-        error += "*Selecione algum genero alimenticio\n"
-    }
-    return error
-}
-
 export default function AddProduct({ exitBtn, exitState, reload }){
-    const [body, setBody] = useState({})
+    let body
     const [productName, setProductName] = useState("")
     const [productDescription, setProductDescription] = useState("")
     const [foodKind, setFoodKind] = useState(0)
     const [amount, setAmount] = useState(0)
     const [expirationDate, setExpirationDate] = useState(new Date())
-    let [confirmation, setConfirmation] = useState(false)
+    const [confirmation, setConfirmation] = useState(false)
     return <Modal animationType="fade" transparent = { true } >
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
@@ -63,20 +46,20 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                 </View>
                 <View style = {{ marginBottom: 30 }} >
                     <Submit content="Adicionar" action={() => { 
-                        setBody({
+                        body = ({
                             product_name: productName,
                             product_description: productDescription,
                             food_kind: foodKind,
                             amount: amount,
                             expiration_date: moment(expirationDate).format("YYYY-MM-DD")
                         })
-                        if(checkBody(body) == "")
+                        if(Requests.checkBody(body) == "")
                         {
                             setConfirmation(true)                        
                         }
                         else
                         {
-                            Alert.alert("Erro", checkBody(body))
+                            Alert.alert("Erro", Requests.checkBody(body))
                         }
                         } }/>
                 </View>

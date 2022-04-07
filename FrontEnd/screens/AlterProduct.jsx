@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Modal, Text } from "react-native";
+import { View, Modal, Text, Alert } from "react-native";
 import styles from "../styles/style"
 import NumberInput from "../components/number_input";
 import FoodKinds from "../components/food_kinds";
@@ -15,30 +15,14 @@ const window = Dimensions.get("window");
 
 export default function AlterProduct({setState, values, reload}){
 
-    function checkBody(body){
-        let error = ""
-        if(body.product_name == ""){
-            error += "*Preencha o campo de nome\n"
-        }
-        if(body.product_description == ""){
-            error += "*Preencha o campo de descrição \n"
-        }
-        if(body.amount == 0){
-            error += "*Insira alguma quantidade\n"
-        }
-        if(body.food_kind == 0){
-            error += "*Selecione algum genero alimenticio\n"
-        }
-        return error
-    }
-    let [body, setBody] = useState({})
+    let body
     let [sub, setSub ] = useState(0)
     let [sum, setSum ] = useState(0)
     const [productName, setProductName] = useState(values.product_name)
     const [productDescription, setProductDescription] = useState(values.product_description)
     const [foodKind, setFoodKind] = useState(values.food_kind_id)
     const [expirationDate, setExpirationDate] = useState(moment(values.expiration_date).toDate())
-    let [confirmation, setConfirmation] = useState(false)
+    const [confirmation, setConfirmation] = useState(false)
     const [quantity, setQuantity] = useState(values.amount)
     const [quantityChanger, setQuantityChanger] = useState(0)
 
@@ -46,7 +30,7 @@ export default function AlterProduct({setState, values, reload}){
         switch (quantityChanger){
             case 0:
                 return <>
-                    <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20 }} >
+                    <View style = { styles.amount_options } >
                         <Submit content="Adicionar" styleContainer={[styles.add]}  action={ () => { setQuantityChanger(1); setSum(0) } } />
                         <Submit content="Retirar" styleContainer={ styles.remove } action={ () => { setQuantityChanger(2); setSub(0) } }/>
                     </View>
@@ -56,7 +40,7 @@ export default function AlterProduct({setState, values, reload}){
                     <View style = {{ marginBottom: 10 }} >
                        <NumberInput setState={setSum} /> 
                     </View>
-                    <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20 }} >
+                    <View style = { styles.amount_options } >
                         <Submit content="Adicionar" styleContainer={[styles.add, { paddingHorizontal: 10 }]} action={ () => {setQuantity(quantity + sum)} } />
                         <Submit content="Parar" styleContainer={ [styles.remove, { paddingHorizontal: 23 }] } action={ () => { setQuantityChanger(0) } } />
                     </View>
@@ -66,7 +50,7 @@ export default function AlterProduct({setState, values, reload}){
                     <View style = {{ marginBottom: 10 }} >
                        <NumberInput setState={setSub} /> 
                     </View>
-                    <View style = {{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginBottom: 20 }} >
+                    <View style = { styles.amount_options } >
                         <Submit content="Retirar" styleContainer={ [styles.add, { paddingHorizontal: 19 }] } action={ () => { if( quantity - sub < 0 ){ setQuantity(0); return } setQuantity(quantity - sub) } }/>
                         <Submit content="Parar" styleContainer={ [styles.remove, { paddingHorizontal: 23 }] } action={ () => { setQuantityChanger(0) } } />
                     </View>
@@ -102,20 +86,22 @@ export default function AlterProduct({setState, values, reload}){
                 </View>
                 <View style = {{ marginBottom: 30 }} >
                     <Submit content="Salvar" action={() => { 
-                        setBody({
+                        body = ({
                             product_name: productName,
                             product_description: productDescription,
                             food_kind: foodKind,
                             amount: quantity,
                             expiration_date: moment(expirationDate).format("YYYY-MM-DD")
                         })
-                        if(checkBody(body) == "")
+                        if(Requests.checkBody(body) === "")
                         {
+                            console.log(1)
                             setConfirmation(true)                        
                         }
                         else
                         {
-                            Alert.alert("Erro", checkBody(body))
+                            setConfirmation(false)
+                            Alert.alert("Erro", Requests.checkBody(body))
                         }
                         } }/>
                 </View>
@@ -126,7 +112,8 @@ export default function AlterProduct({setState, values, reload}){
                 setConfirmation(false)
                 setState(false)
                 reload()
-             }, values.id)
+             }, 
+             values.id)
         } } /> : null }
     </Modal>
     }
