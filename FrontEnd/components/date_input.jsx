@@ -3,7 +3,7 @@ import { View, TouchableHighlight , Text } from 'react-native';
 import DateTimePicker from "@react-native-community/datetimepicker"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons"
-import styles from "../styles/style"
+import styles from "../styles/date_input"
 const moment = require("moment")
 
 export default function DataInput({setState, date = new Date()}) {  

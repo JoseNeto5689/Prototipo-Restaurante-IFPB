@@ -13,7 +13,6 @@ class Requests{
             body: JSON.stringify(requestBody)
         })
         .then((resp) => resp.json())
-        .then((resp) => console.log(resp))
         .finally(() => { func() })
             
     }
@@ -24,7 +23,6 @@ class Requests{
             headers:{'Content-Type': "application/json"}, 
             body: JSON.stringify(requestBody)})
             .then((resp) => resp.json())
-            .then((resp) => console.log(resp))
             .finally(() => { func() })
     }
 
@@ -36,7 +34,6 @@ class Requests{
             id: ids
         })})
         .then((resp) => resp.json())
-        .then((resp) => console.log(resp))
         .finally(() => { func() })
     }
     list(setDados, setLoading){ //Precisa da estrutura do ActivityIndicator e do useEffect

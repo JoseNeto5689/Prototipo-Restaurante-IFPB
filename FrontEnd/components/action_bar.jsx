@@ -3,7 +3,7 @@ import { View, TextInput, TouchableHighlight} from "react-native"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSearch, faFilter, faPen, faTimes, faPlus, faCartArrowDown } from "@fortawesome/free-solid-svg-icons"
 import { Dimensions } from "react-native";
-import styles from "../styles/style"
+import styles from "../styles/action_bar"
 const window = Dimensions.get("window");
 
 export default function ActionBar({ editionMode, editeBtn, addProduct, addState, action }){

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Modal, Text, Alert } from "react-native";
-import styles from "../styles/style"
+import styles from "../styles/AlterAddConfirm"
 import NumberInput from "../components/number_input";
 import FoodKinds from "../components/food_kinds";
 import TextInput from "../components/text_input"
@@ -44,7 +44,7 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                         <Text style = {{ fontFamily: "NunitoSans_900Black", color: "#707070", fontSize: window.width * 0.05, marginRight: window.width* 0.02 }}>Validade:</Text><DataInput setState={ setExpirationDate } date={ expirationDate } />
                     </View>
                 </View>
-                <View style = {{ marginBottom: 30 }} >
+                <View style = {{ marginBottom: 20 }} >
                     <Submit content="Adicionar" action={() => { 
                         body = ({
                             product_name: productName,

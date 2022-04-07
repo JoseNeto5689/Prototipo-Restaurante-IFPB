@@ -3,7 +3,7 @@ import { Text, View, ScrollView, TouchableHighlight } from "react-native";
 import CheckBox from "./check_box";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons"
-import styles from "../styles/style"
+import styles from "../styles/product"
 import ExpandedProduct from "../screens/ExpandedProduct"
 import AlterProduct from "../screens/AlterProduct";
 
@@ -22,8 +22,9 @@ export default function Product({values, editionMode, list, reload, reset}){
             ? 
                 <CheckBox id={values.id} list={ list } reset={ reset } /> 
             : 
-            null}
-                <Text style = { [styles.tag_name ] } >Nome do Produto</Text>
+            null
+            }
+            <Text style = { [styles.tag_name ] } >Nome do Produto</Text>
             {editionMode && list.length === 0 
             ? 
                 <TouchableHighlight onPressOut={ () => {setEditProduct(true)} } underlayColor={ null }>

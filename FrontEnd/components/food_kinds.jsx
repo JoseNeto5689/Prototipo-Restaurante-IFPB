@@ -1,7 +1,8 @@
 import React, {useState} from 'react'; 
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { Picker as Pick} from "@react-native-picker/picker"
 import { Dimensions } from "react-native";
+import styles from "../styles/food_kinds"
 const window = Dimensions.get("window");
 
 export default function FoodKinds({ defaultValue, setState }){
@@ -29,18 +30,3 @@ export default function FoodKinds({ defaultValue, setState }){
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      borderColor: "#707070",
-      borderWidth: 2,
-      height: 32,
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 15
-    },
-    item: {
-        color: "#707070",
-        fontWeight: "bold"
-    }
-  })

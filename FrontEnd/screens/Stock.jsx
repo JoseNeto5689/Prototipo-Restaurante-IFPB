@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'; 
-import { StyleSheet, View, StatusBar, ActivityIndicator, SafeAreaView, Alert } from 'react-native';
+import { View, StatusBar, ActivityIndicator, SafeAreaView, Alert } from 'react-native';
 import ProductList from '../components/product_list';
 import Header from '../components/hearder';
 import Footer from '../components/footer';
@@ -7,6 +7,7 @@ import ActionBar from '../components/action_bar';
 import DeleteButton from '../components/delete_button';
 import AddProduct from './AddProduct';
 import Confirmation from './Confirmation';
+import styles from "../styles/Stock"
 const Requests = require("../controllers/request-control")
 
 
@@ -44,7 +45,7 @@ export default function Stock() {
             ?
             <DeleteButton action={() => {
               if(deleteList.length === 0){
-                Alert.alert("Aviso", "Nenhum item selecionado para deleção")
+                Alert.alert("Aviso", "Nenhum item selecionado para remoção")
               }
               else {
                 setConfirmation(true)
@@ -91,10 +92,3 @@ export default function Stock() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

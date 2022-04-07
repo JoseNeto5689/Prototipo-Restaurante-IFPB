@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { View, TouchableHighlight } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
-import styles from "../styles/style"
+import styles from "../styles/check_box"
 
 export default function CheckBox({ id, list, reset }){ //Alternativa ao fato do react native não possuir um componente de check box -_-
     const [check, setCheck] = useState(false) //Estado da check box: selecionado ou não selecionado

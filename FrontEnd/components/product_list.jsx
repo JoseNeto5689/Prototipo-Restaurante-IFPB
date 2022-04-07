@@ -3,7 +3,7 @@ import { FlatList, View, Text } from "react-native";
 import Product from "./product";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons"
-import styles from "../styles/style"
+import styles from "../styles/product_list"
 
 export default function ProductList({values, editionMode, list, reload, reset}){
     if (values.length == 0){

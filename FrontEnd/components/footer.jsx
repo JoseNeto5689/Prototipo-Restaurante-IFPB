@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCalendarAlt, faCubes, faChartLine   } from "@fortawesome/free-solid-svg-icons"
-import styles from "../styles/style"
+import styles from "../styles/footer"
   
 export default function PageFooter(){
     return (

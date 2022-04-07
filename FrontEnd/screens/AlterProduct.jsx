@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Modal, Text, Alert } from "react-native";
-import styles from "../styles/style"
+import styles from "../styles/AlterAddConfirm"
 import NumberInput from "../components/number_input";
 import FoodKinds from "../components/food_kinds";
 import TextInput from "../components/text_input"
@@ -95,7 +95,6 @@ export default function AlterProduct({setState, values, reload}){
                         })
                         if(Requests.checkBody(body) === "")
                         {
-                            console.log(1)
                             setConfirmation(true)                        
                         }
                         else

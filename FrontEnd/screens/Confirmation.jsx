@@ -1,6 +1,6 @@
 import React from "react"
 import { Modal, Text, View } from "react-native"
-import styles from "../styles/style"
+import styles from "../styles/AlterAddConfirm"
 import Submit from "../components/submit"
 
 export default function Confirmation({ content, option, action, cancel, actionText }){

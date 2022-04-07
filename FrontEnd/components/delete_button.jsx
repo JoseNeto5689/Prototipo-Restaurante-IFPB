@@ -1,6 +1,6 @@
 import React from "react"
-import { Text, TouchableHighlight, View } from "react-native"
-import styles from "../styles/style"
+import { Text, TouchableHighlight } from "react-native"
+import styles from "../styles/delete_button"
 
 export default function DeleteButton({action}){
     return ( 
