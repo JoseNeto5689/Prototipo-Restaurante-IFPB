@@ -1,5 +1,6 @@
 //Importações
 const express = require("express");
+const cors = require("cors")
 const consign = require("consign");
 const bodyParser = require("body-parser");
 
@@ -8,6 +9,7 @@ module.exports = () => {
     const app = express()
     app.use(bodyParser.urlencoded({extended: true})) //Permitir que o servidor possa ler respostas de formulário
     app.use(bodyParser.json()) //Permitir que o servidor possa ler respostas de formulário
+    app.use(cors())
     consign().include("controllers").into(app) //Unindo as totas dos controllers ao app. 
     return app
 }

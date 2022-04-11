@@ -15,7 +15,7 @@ const window = Dimensions.get("window");
 
 export default function AlterProduct({setState, values, reload}){
 
-    let body
+    const [body,setBody] = useState({})
     let [sub, setSub ] = useState(0)
     let [sum, setSum ] = useState(0)
     const [productName, setProductName] = useState(values.product_name)
@@ -86,7 +86,7 @@ export default function AlterProduct({setState, values, reload}){
                 </View>
                 <View style = {{ marginBottom: 30 }} >
                     <Submit content="Salvar" action={() => { 
-                        body = ({
+                        setBody({
                             product_name: productName,
                             product_description: productDescription,
                             food_kind: foodKind,
