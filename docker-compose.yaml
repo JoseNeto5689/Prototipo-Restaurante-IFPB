@@ -10,6 +10,7 @@ services:
       - "19002:19002"
     depends_on:
       - back-end
+    restart: always
     networks:
       - restaurant
   
@@ -20,12 +21,14 @@ services:
       - "3000:3000"
     depends_on:
       - database
+    restart: always
     networks:
       - restaurant
   
   database:
     container_name: database
     build: ./Database
+    restart: always
     networks:
       - restaurant
     volumes:
