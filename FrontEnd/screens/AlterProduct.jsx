@@ -85,22 +85,23 @@ export default function AlterProduct({setState, values, reload}){
                      { quantityModify(quantityChanger) }
                 </View>
                 <View style = {{ marginBottom: 30 }} >
-                    <Submit content="Salvar" action={() => { 
-                        setBody({
+                    <Submit content="Salvar" action={() => {  
+                        let constructedBody = {
                             product_name: productName,
                             product_description: productDescription,
                             food_kind: foodKind,
                             amount: quantity,
                             expiration_date: moment(expirationDate).format("YYYY-MM-DD")
-                        })
-                        if(Requests.checkBody(body) === "")
+                        }
+                        setBody(constructedBody)
+                        if(Requests.checkBody(constructedBody) === "")
                         {
                             setConfirmation(true)                        
                         }
                         else
                         {
                             setConfirmation(false)
-                            Alert.alert("Erro", Requests.checkBody(body))
+                            Alert.alert("Erro", Requests.checkBody(constructedBody))
                         }
                         } }/>
                 </View>

@@ -47,20 +47,21 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                 </View>
                 <View style = {{ marginBottom: 20 }} >
                     <Submit content="Adicionar" action={() => { 
-                        setBody({
+                        let constructedBody = {
                             product_name: productName,
                             product_description: productDescription,
                             food_kind: foodKind,
                             amount: amount,
                             expiration_date: moment(expirationDate).format("YYYY-MM-DD")
-                        })
-                        if(Requests.checkBody(body) == "")
+                        }
+                        setBody(constructedBody)
+                        if(Requests.checkBody(constructedBody) == "")
                         {
                             setConfirmation(true)                        
                         }
                         else
                         {
-                            Alert.alert("Erro", Requests.checkBody(body))
+                            Alert.alert("Erro", Requests.checkBody(constructedBody))
                         }
                         } }/>
                 </View>
