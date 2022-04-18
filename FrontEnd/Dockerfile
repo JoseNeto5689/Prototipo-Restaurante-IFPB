@@ -14,6 +14,4 @@ COPY . .
 
 RUN npm install 
 
-RUN npm install use-state-with-callback
-
 CMD ["expo", "start"]
