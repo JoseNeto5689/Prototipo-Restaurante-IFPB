@@ -57,6 +57,7 @@ class Requests{
         .then((resp) => { 
             let error = false
             if(id == null){
+                console.log(resp)
                 resp.forEach((item) => {
                     if(item.product_name == requestBody.product_name){
                         error = true

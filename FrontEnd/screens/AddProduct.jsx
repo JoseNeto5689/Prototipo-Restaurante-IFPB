@@ -14,13 +14,14 @@ import { Dimensions } from "react-native";
 const window = Dimensions.get("window");
 
 export default function AddProduct({ exitBtn, exitState, reload }){
-    let body
+    const [body,setBody] = useState({})
     const [productName, setProductName] = useState("")
     const [productDescription, setProductDescription] = useState("")
     const [foodKind, setFoodKind] = useState(0)
     const [amount, setAmount] = useState(0)
     const [expirationDate, setExpirationDate] = useState(new Date())
     const [confirmation, setConfirmation] = useState(false)
+
     return <Modal animationType="fade" transparent = { true } >
         <View style = { styles.modalView } >
             <View style={ styles.formContainer } >
@@ -46,7 +47,7 @@ export default function AddProduct({ exitBtn, exitState, reload }){
                 </View>
                 <View style = {{ marginBottom: 20 }} >
                     <Submit content="Adicionar" action={() => { 
-                        body = ({
+                        setBody({
                             product_name: productName,
                             product_description: productDescription,
                             food_kind: foodKind,
